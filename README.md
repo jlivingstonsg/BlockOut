@@ -1,5 +1,4 @@
-# BlockOut
-BlockOut for browser
+# BlockOut for browser in HTML5, CSS and JavaScript 
 =======
 
 This is a remake of the 3D Tetris "BlockOut" from 1989. 
