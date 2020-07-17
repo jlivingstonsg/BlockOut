@@ -1,7 +1,7 @@
 # BlockOut for browser in HTML5, CSS and JavaScript 
 =======
 
-This is a remake of the 3D Tetris "BlockOut" from 1989. 
+This is a remake of the 3D Tetris "BlockOut" from 1989. <br>
 I didn't write it, I just made a few modifications.  
 The original lives on [Chrome Experiments](http://www.chromeexperiments.com/detail/cubeout/?f=) and was done by [alteredq](https://github.com/alteredq).
 
