@@ -42,7 +42,7 @@ var SPEED_MAP = {
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
-var ANIM_DURATION = 150;
+var ANIM_DURATION = 10;
 var FRAME_DELAY = 10;
 
 var DELTA = 1;
