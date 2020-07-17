@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="Remake of classic puzzle game Blockout (3d tetris) in HTML 5"/>
+    <title>CubeOut</title>
+    <link type="text/css" rel="stylesheet" href="css/cubeout.css"/>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/cubeout.js"></script>
+</head>
 
+<body>
+
+<center>
+    <h1><a href="/cubeout">CubeOut</a></h1>
+    
+    <div id="fps">&nbsp;</div>
+    
+    <div id="screenwrap">
+        
+        <canvas id="screen" class="shadow"><div id="dummy">Sorry, you need to check this page in browser that supports HTML5 canvas (like current version of Chrome, Opera, Firefox or Safari).</div></canvas>
+        
+        <div id="difficulty" class="hud">
+            <span id="pieces" title="Change pieces complexity">
+                <span class="button">Flat</span> <span class="button">Basic</span> <span class="button">Extended</span>
+            </span>
+            <span id="pit" title="Change pit size">
+                 <span class="button">3x3x10</span> <span class="button">5x5x10</span> <span class="button">5x5x12</span>
+            </span>
+            <span id="speed" title="Change game speed">
+                <span class="button">0</span> <span class="button">1</span> <span class="button">2</span> <span class="button">3</span> <span class="button">4</span>
+            </span>
+            <span id="keys" title="Set custom keys">
+                <span class="button">Keys</span>
+            </span>
+        </div>
+
+        <div id="score">&nbsp;</div>
+
+        <div id="column"><canvas id="screen2"></canvas></div>
+        
+        <div id="message" class="hud full">  
+            <div id="description" class="shadow">
+                Remake of <a href="http://en.wikipedia.org/wiki/Blockout">Blockout (3d tetris)</a> in HTML 5<br/>
+                <small><br/>Works in Firefox, Chrome, Opera and Safari<br/>
+                Best performance in Chrome and Opera</small>
+            </div>
+            
+            <div id="controls">
+                Rotate with Q,W,E,A,S,D<br/>
+                Move with arrows<br/>
+                Drop with space<br/>
+                <br/>
+                Quit ESC<br/>
+                Pause P<br/>
+                <br/>
+                <span class="action">Press space to start</span>
+            </div>
+            
+            <span id="hs">High scores</span>
+        </div>
+        
+        <div id="keyset" class="hud full">
+            <h3>Set custom keys</h3>
+            <small>Click on the label and then press key</small>
+            
+            <ul>
+            <li><span class="lbl">left</span> <span class="val"></span></li>
+            <li><span class="lbl">right</span> <span class="val"></span></li>
+            <li><span class="lbl">up</span> <span class="val"></span></li>
+            <li><span class="lbl">down</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate X+</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate X-</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate Y+</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate Y-</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate Z+</span> <span class="val"></span></li>
+            <li><span class="lbl">rotate Z-</span> <span class="val"></span></li>
+            <li><span class="lbl">drop</span> <span class="val"></span></li>
+            </ul>
+            <span class="button xb gold" id="keys_reset">Reset to default</span>
+            <span class="button xb" id="keys_ok">Accept</span>
+            <span class="button xb red" id="keys_cancel">Cancel</span>
+        </div>
+        
+        <div id="highscores" class="hud full">
+            <h3>High scores</h3>
+            <small>On this computer and browser</small>
+            <div id="hscontent"></div>
+            <span class="button xb" id="hs_back">Back</span>
+        </div>
+        
+        <div id="over" class="hud">
+            <h2>Game over</h2>
+            <br/>
+            <span id="scorelabel">Score</span> <span id="finalscore">0</span><br/>
+            <br/>
+            <span class="action">Press space to play again</span>
+        </div>
+        
+        <div id="pause" class="hud">
+            Pause
+        </div>
+        
+    </div>
+    
+    <div id="footer">
+        <small><a href="mailto:postfilter@gmail.com">Feedback</a><br/><a href="http://twitter.com/alteredq">Twitter</a><br/><a href="https://github.com/Ringdingcoder/CubeOut/">Source</a></small>
+    </div>
+</center>
+
+<div id="layers"></div>
+<div id="log" class="shadow"></div>
+
+
+</body>
+
+</html>
