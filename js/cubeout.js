@@ -665,8 +665,8 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
     if(CACHE_PIT == 0 || refresh_flag) {
 
         // colors
-        var color1  = "#555555";    // gradient start
-        var color2  = "#000000";    // gradient end
+        var color1  = "#8bfc44";    // gradient start
+        var color2  = "#8bfc44";    // gradient end
         var bgcolor = BG_COLOR;    // pit background
 
         var cwidth = canvas.width;
