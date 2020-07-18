@@ -28,7 +28,7 @@ var CUBE_OUTLINE = "#000";
 var FORCE_DEPTH_COLOR = 1;
 
 var LINEWIDTH_CUBE = 0.5;
-var LINEWIDTH_PIT = 0.5;
+var LINEWIDTH_PIT = 0.4;
 
 // game speed
 var SPEED = 2;
