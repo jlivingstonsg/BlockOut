@@ -692,7 +692,7 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
 
             ctx.strokeRect(offsetx, offsety, cwidth-2*offsetx, cheight-2*offsety);
             if(z==depth) {
-                ctx.fillStyle = "#81f736";
+                ctx.fillStyle = "#000";
                 ctx.fillRect(offsetx, offsety, cwidth-2*offsetx, cheight-2*offsety);
             }
         }
