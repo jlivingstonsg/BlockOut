@@ -2,7 +2,7 @@
 
 html { background:#111; }
 body { font-family:verdana; background:#111; color:#fff; text-shadow:#000 0px 0px 0.1em;  }
-h1 { margin:1em 0 0.5em; color:#fff; font-size:3em; font-variant:small-caps; font-weight:bold; text-shadow:#000 0px 0px 0.3em; letter-spacing:0.04em }
+h1 { margin:1em 0 0.5em; color:#fff; font-size:3em; font-variant:small-caps; font-weight:bold; text-shadow:#000 0px 0px 0.3em; letter-spacing:0.04em; }
 h3 { color:gold; }
 
 a { text-decoration:none; color:#fff }
