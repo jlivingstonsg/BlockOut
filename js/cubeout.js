@@ -42,7 +42,11 @@ var SPEED_MAP = {
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
-var ANIM_DURATION = 10;
+var SLOW_ANIM_DURATION = 150;
+var MED_ANIM_DURATION = 70;
+var FAST_ANIM_DURATION = 10;
+
+var ANIM_DURATION = MED_ANIM_DURATION;
 var FRAME_DELAY = 10;
 
 var DELTA = 1;
@@ -2107,6 +2111,17 @@ function refresh_column() {
 /*****************************************************************************************/
 // Main
 /*****************************************************************************************/
+var rotateSpeed = "medium";
+function setRotateSpeed(spd){
+	if(spd === "slow")
+		ANIM_DURATION = SLOW_ANIM_DURATION;
+	else if(spd === "fast"){
+		ANIM_DURATION = FAST_ANIM_DURATION;
+	}
+	else{
+		ANIM_DURATION = MED_ANIM_DURATION;
+	}
+}
 $(document).ready(function(){
     copy_keymap(KEYMAP_DEFAULT, KEYMAP);
     copy_keymap(KEYMAP, KEYMAP_TMP);
@@ -2132,6 +2147,8 @@ $(document).ready(function(){
     // difficulty settings
     $("#pieces .button").each(function() { if($(this).text().toLowerCase()==SET) $(this).addClass("on");});
     $("#pieces .button").click(function() { change_set($(this).get(0)); $("#pieces .button").removeClass("on"); $(this).addClass("on"); });
+	$("#rotSpeed .button").each(function() {if($(this).text().toLowerCase()==rotateSpeed) $(this).addClass("on");});
+    $("#rotSpeed .button").click(function() {setRotateSpeed($(this).text().toLowerCase()); $("#rotSpeed .button").removeClass("on"); $(this).addClass("on"); });
 
     var pit_string = PIT_WIDTH+"x"+PIT_HEIGHT+"x"+PIT_DEPTH;
     $("#pit .button").each(function() { if($(this).text().toLowerCase()==pit_string) $(this).addClass("on");});
