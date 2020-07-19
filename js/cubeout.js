@@ -690,9 +690,11 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
             offsety = z*(ZSIZE_Y-z);
 
             //r = g = b = Math.floor(64*(0.5+2*(depth-z)/depth));
+
 			r = 0;
 			g = 255;
 			b = 0;
+
             ctx.strokeStyle = "rgb("+r+","+g+","+b+")";
             //b = Math.floor(64*(0.1+1*(depth-z)/depth));
             //ctx.strokeStyle = "hsl(0,90%,"+b+"%)";
