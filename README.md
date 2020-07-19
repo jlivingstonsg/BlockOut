@@ -9,9 +9,9 @@ My modifications correct the way the pieces rotate. <br>
 Animation can get a little jaggy occasionally, but everything behaves as it should. <br>
 I did not intend to make this perfect but merely playable.<br>
 
-I will try to make it look and work, as the original BlockOut from 1989.
+I will try to make it look and work, as the original BlockOut from 1989.  <br>
 
-=======
+=======  <br>
 Play  jlivingstonsg  game here: [CubeOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
 Play  woshik         game here: [CubeOut](https://woshik.github.io/cube-game/)       <br>
 Play  sami-23        game here: [CubeOut](https://sami-23.github.io/BlockOut/)
