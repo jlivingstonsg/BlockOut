@@ -226,17 +226,17 @@ h1 a:hover {
   position: relative;
   top: -2em;
 }
-#pieces {
-  margin: 0 0.5em 0 0;
+#pieces { 
+margin: 0 0.1em 0 0;
 }
-#pit {
-  margin: 0 0.5em 0 0.5em;
+#pit { 
+margin: 0 0.1em 0 0.1em;
 }
-#speed {
-  margin: 0 0.5em 0 0.5em;
+#speed { 
+margin: 0 0.1em 0 0.1em;
 }
-#keys {
-  margin: 0 0 0 0.5em;
+#keys { 
+margin: 0 0 0 0.1em;
 }
 
 #column {
