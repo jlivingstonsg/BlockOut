@@ -95,8 +95,16 @@
             <span class="button xb" id="hs_back">Back</span>
         </div>
         
-            <div id="over" class="hud">
+	     <div id="getGamerName" class="hud">
                 <h2>Game over</h2>
+                <br />
+                <input name="username" placeholder="Name" class="username-input" id="username" autocomplete="off" autofocus>
+                <br />
+                <button onclick="showScoreUI()">Save</button>
+            </div> 
+	    
+            <div id="over" class="hud">
+                <h2>Game Over</h2>
                 <br />
                 <span id="namelabel">Gamer Name: </span><span id="username-label"></span><br />
                 <br />
