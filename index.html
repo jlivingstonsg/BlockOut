@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta name="description" content="Remake of classic puzzle game Blockout (3d tetris) in HTML 5" />
-    <title>CubeOut</title>
+    <meta name="description" content="Remake of classic puzzle game Blockout (3d tetris) in 
+    HTML5 from 1989."/>
+    <title>BlockOut</title>
     <link type="text/css" rel="stylesheet" href="css/cubeout.css" />
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -12,16 +12,17 @@
 
 <body>
 
-    <center>
-        <h1><a href="/cubeout">CubeOut</a></h1>
+<center>
+    <h1><a href="https://github.com/jlivingstonsg/BlockOut">BlockOut</a></h1>
+    <h3><a href="https://www.gamereality.se/">GameReality</a></h1>
 
         <div id="fps">&nbsp;</div>
 
         <div id="screenwrap">
 
             <canvas id="screen" class="shadow">
-                <div id="dummy">Sorry, you need to check this page in browser that supports HTML5 canvas (like current
-                    version of Chrome, Opera, Firefox or Safari).</div>
+                <div id="dummy">Sorry, you need to check this page in browser that supports HTML5
+                canvas (like current version of Chrome, Opera, Firefox or Safari).</div>
             </canvas>
 
             <div id="difficulty" class="hud">
@@ -34,9 +35,17 @@
                         class="button">5x5x12</span>
                 </span>
                 <span id="speed" title="Change game speed">
-                    <span class="button">0</span> <span class="button">1</span> <span class="button">2</span> <span
-                        class="button">3</span> <span class="button">4</span>
+                    <span class="button">0</span> 
+                    <span class="button">1</span> 
+                    <span class="button">2</span>
+                    <span class="button">3</span> 
+                    <span class="button">4</span>
                 </span>
+                
+ 			<span id="rotSpeed" title="Change Rotation speed">
+                <span class="button">Slow</span> <span class="button">Medium</span> <span class="button">Fast</span>
+            </span>               
+                
                 <span id="keys" title="Set custom keys">
                     <span class="button">Keys</span>
                 </span>
@@ -48,7 +57,8 @@
 
             <div id="message" class="hud full">
                 <div id="description" class="shadow">
-                    Remake of <a href="http://en.wikipedia.org/wiki/Blockout">Blockout (3d tetris)</a> in HTML 5<br />
+                    Remake of <a href="http://en.wikipedia.org/wiki/Blockout">
+                Blockout (3d tetris)</a> in HTML5 from 1989.<br/>
                     <small><br />Works in Firefox, Chrome, Opera and Safari<br />
                         Best performance in Chrome and Opera</small>
                 </div>
@@ -64,7 +74,7 @@
                     <span class="action">Press space to start</span>
                 </div>
 
-                <span id="hs">High scores</span>
+                <span id="hs">High Scores</span>
             </div>
 
             <div id="keyset" class="hud full">
@@ -105,10 +115,12 @@
             </div>
 
             <div id="over" class="hud">
-                <h2>Game over</h2>
+                <h2>Game Over</h2>
                 <br />
                 <span id="namelabel">Gamer Name: </span><span id="username-label"></span><br />
                 <br />
+                             <input type="text" name="name" id="name" value="">
+            <br/> 
                 <span id="scorelabel">Score</span> <span id="finalscore">0</span><br />
                 <br />
                 <span class="action">Press space to play again</span>
@@ -121,9 +133,9 @@
         </div>
 
         <div id="footer">
-            <small><a href="mailto:postfilter@gmail.com">Feedback</a><br /><a
-                    href="http://twitter.com/alteredq">Twitter</a><br /><a
-                    href="https://github.com/Ringdingcoder/CubeOut/">Source</a></small>
+                <small><a href="mailto:gamereality@gmail.com">Feedback</a><br/><a 
+                href="https://twitter.com/jlivingstonsg">Twitter</a><br/><a
+                href="https://github.com/Ringdingcoder/CubeOut/">Source</a></small>
         </div>
     </center>
 
