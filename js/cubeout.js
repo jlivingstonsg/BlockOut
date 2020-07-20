@@ -357,7 +357,7 @@ var START, END, ELAPSED;
 var ID1 = -1, ID2 = -1;
 
 // game state
-var STATE = {"setkeys":0};
+var STATE = { setkeys: 0 };
 
 // pause
 var PAUSE_ANIM = 1;
@@ -368,6 +368,13 @@ var DP = 0;
 
 // highscore
 var HIGHSCORE = {};
+
+// username
+var USERNAME = '';
+
+// end game context
+var CANVAS;
+var CTX;
 
 /*****************************************************************************************/
 // Pieces
@@ -390,12 +397,12 @@ function precompute_pieces() {
             cz = Math.floor(cz);
 
             PIECES[set][i] = {
-            'lines' :piece3d.lines,
-            'voxels':piece3d.voxels,
-            'cx'    :cx,
-            'cy'    :cy,
-            'cz'    :cz,
-            'bb'    :bb
+                 lines: piece3d.lines,
+                 voxels: piece3d.voxels,
+                 cx: cx,
+                 cy: cy,
+                 cz: cz,
+                 bb: bb
             };
         }
     }
@@ -983,7 +990,7 @@ function render_shadow(canvas, ctx, margin, refresh_flag) {
         lingrad = ctx.createLinearGradient(cwidth,sy,cwidth-margin,sy);
         lingrad.addColorStop(0.0, start);
         lingrad.addColorStop(1.0, end);
-        cache_ctx.fillStyle = lingrad
+        cache_ctx.fillStyle = lingrad;
         cache_ctx.fillRect(cwidth-margin,sy, margin, cheight-sy);
     }
 
