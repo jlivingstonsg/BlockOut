@@ -1,6 +1,6 @@
 * {
 	padding: 0;
-	margin: 0;
+	margin: 0
 }
 html {
 	background: #111;
@@ -18,20 +18,20 @@ h1 {
 	font-variant: small-caps;
 	font-weight: bold;
 	text-shadow: #000 0px 0px 0.3em;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.04em
 }
 h3 {
 	color: gold;
 }
 a {
 	text-decoration: none;
-	color: #fff;
+	color: #fff
 }
 a:hover {
-	text-decoration: underline;
+	text-decoration: underline
 }
 h1 a:hover {
-	text-decoration: none;
+	text-decoration: none
 }
 .shadow {
 	box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
@@ -40,25 +40,25 @@ h1 a:hover {
 	-khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
 }
 #fps {
-	display: none;
+	display: none
 }
 #screenwrap {
 	height: 620px;
 	border: solid 0px red;
-	overflow: hidden;
+	overflow: hidden
 }
 #screen,
 #dummy {
 	padding: 3em;
 	background: #000;
-	margin-top: 15px;
+	margin-top: 15px
 }
 #dummy {
 	width: 500px;
 	height: 500px;
 }
 #dummy {
-	color: orangered;
+	color: orangered
 }
 .hud {
 	position: relative;
@@ -78,35 +78,35 @@ h1 a:hover {
 }
 #message a,
 #hs {
-	color: #009fa0;
+	color: #009FA0
 }
 #hs {
-	cursor: pointer;
+	cursor: pointer
 }
 #hs:hover {
-	text-decoration: underline;
+	text-decoration: underline
 }
 #highscores {
 	display: none;
-	top: -552px;
+	top: -552px
 }
 #highscores h3 {
-	margin: 2em 0 1em;
+	margin: 2em 0 1em
 }
 #hscontent {
 	margin: 1em;
 	color: #eee;
 	border: solid 0px red;
 	height: 320px;
-	overflow: auto;
+	overflow: auto
 }
 #hscontent th {
 	text-align: left;
 	color: #999;
-	padding: 0 1em 0 0;
+	padding: 0 1em 0 0
 }
 #hscontent td {
-	padding: 0 1em 0 0;
+	padding: 0 1em 0 0
 }
 .ths {
 	color: orangered;
@@ -119,17 +119,13 @@ h1 a:hover {
 	padding: 1em 0;
 }
 #controls {
-	background: rgba(100, 100, 100, 0);
-	padding: 1em 0;
+	background: rgba(100, 100, 100, 0.0);
+	padding: 1em 0
 }
 .action {
-	color: yellow;
+	color: yellow
 }
 #over {
-	top: -400px;
-	display: none;
-}
-#getGamerName {
 	top: -400px;
 	display: none;
 }
@@ -144,14 +140,14 @@ h1 a:hover {
 }
 #keyset ul {
 	width: 300px;
-	margin: 1em 0;
+	margin: 1em 0
 }
 #keyset li {
 	text-align: left;
 	list-style-type: none;
 }
 #keyset h3 {
-	margin: 3em 0 1em 0;
+	margin: 3em 0 1em 0
 }
 #keyset .lbl {
 	width: 6em;
@@ -161,21 +157,21 @@ h1 a:hover {
 	cursor: pointer;
 }
 #keyset .lbl:hover {
-	color: #fe4;
+	color: #fe4
 }
 #keyset .val {
-	color: #0a0;
+	color: #0a0
 }
 #keyset .lbl.active,
 #keyset .lbl.active:hover {
-	color: gold;
+	color: gold
 }
 #keyset .val.active {
-	color: #0f0;
+	color: #0f0
 }
 #keys_reset {
 	margin: 0 0 0 9em;
-	float: left;
+	float: left
 }
 #score {
 	display: none;
@@ -191,32 +187,30 @@ h1 a:hover {
 	color: #fff;
 	text-shadow: #000 0px 0px 0.3em;
 }
-#scorelabel,
-#namelabel {
-	color: #aaa;
+#scorelabel {
+	color: #aaa
 }
 #highscore {
 	color: orangered;
 }
-#finalscore,
-#username {
-	font-size: 1.1em;
+#finalscore {
+	font-size: 1.1em
 }
 #difficulty {
 	position: relative;
 	top: -2em;
 }
 #pieces {
-	margin: 0 0.1em 0 0;
+	margin: 0 0.1em 0 0
 }
 #pit {
-	margin: 0 0.1em 0 0.1em;
+	margin: 0 0.1em 0 0.1em
 }
 #speed {
-	margin: 0 0.1em 0 0.1em;
+	margin: 0 0.1em 0 0.1em
 }
 #keys {
-	margin: 0 0 0 0.1em;
+	margin: 0 0 0 0.1em
 }
 #column {
 	display: none;
@@ -226,7 +220,7 @@ h1 a:hover {
 	position: relative;
 	top: -575px;
 	left: -275px;
-	margin-bottom: -500px;
+	margin-bottom: -500px
 }
 .button {
 	color: #444;
@@ -240,7 +234,7 @@ h1 a:hover {
 }
 .xb {
 	color: #fff;
-	background: #0a0 url('button-green.png');
+	background: #0a0 url("button-green.png");
 	box-shadow: 2px 2px 5px #000;
 	-o-box-shadow: 2px 2px 5px #000;
 	-icab-box-shadow: 2px 2px 5px #000;
@@ -251,22 +245,22 @@ h1 a:hover {
 	-webkit-border-radius: 2px;
 }
 .red {
-	background: #a00 url('button-red.png');
+	background: #a00 url("button-red.png");
 }
 .gold {
-	background: #a50 url('button-gold.png');
+	background: #a50 url("button-gold.png");
 }
 .on {
-	color: #fff;
+	color: #fff
 }
 #footer {
 	text-align: center;
 	font-size: 0.9em;
 	color: #666;
-	margin: 1.5em 0 2em 0;
+	margin: 1.5em 0 2em 0
 }
 #footer a {
-	color: #888;
+	color: #888
 }
 /* Debug */
 
@@ -283,7 +277,7 @@ h1 a:hover {
 	margin: 3em 1em;
 	width: 20em;
 	height: 600px;
-	overflow: auto;
+	overflow: auto
 }
 #layers {
 	position: absolute;
@@ -292,20 +286,4 @@ h1 a:hover {
 	color: #000;
 	font-size: 0.8em;
 	font-family: courier;
-}
-.username-input {
-	border: 0;
-	outline: 0;
-	background-color: transparent;
-	border-bottom: 2px solid white;
-	margin-bottom: 14px;
-	font-size: 17px;
-	color: white;
-	text-align: center;
-	padding-bottom: 3px;
-	font-weight: bolder;
-}
-#username-label,
-#hscontent table tr td:first-child {
-	text-transform: capitalize;
 }
