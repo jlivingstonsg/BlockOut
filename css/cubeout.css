@@ -1,339 +1,311 @@
 * {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
-
 html {
-  background: #111;
+	background: #111;
 }
 body {
-  font-family: verdana;
-  background: #111;
-  color: #fff;
-  text-shadow: #000 0px 0px 0.1em;
+	font-family: verdana;
+	background: #111;
+	color: #fff;
+	text-shadow: #000 0px 0px 0.1em;
 }
 h1 {
-  margin: 1em 0 0.5em;
-  color: #fff;
-  font-size: 3em;
-  font-variant: small-caps;
-  font-weight: bold;
-  text-shadow: #000 0px 0px 0.3em;
-  letter-spacing: 0.04em;
+	margin: 1em 0 0.5em;
+	color: #fff;
+	font-size: 3em;
+	font-variant: small-caps;
+	font-weight: bold;
+	text-shadow: #000 0px 0px 0.3em;
+	letter-spacing: 0.04em;
 }
 h3 {
-  color: gold;
+	color: gold;
 }
-
 a {
-  text-decoration: none;
-  color: #fff;
+	text-decoration: none;
+	color: #fff;
 }
 a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
-
 h1 a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
-
 .shadow {
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
-  -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
-  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
-  -khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	-webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
+	-khtml-box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);
 }
-
 #fps {
-  display: none;
+	display: none;
 }
-
 #screenwrap {
-  height: 620px;
-  border: solid 0px red;
-  overflow: hidden;
+	height: 620px;
+	border: solid 0px red;
+	overflow: hidden;
 }
 #screen,
 #dummy {
-  padding: 3em;
-  background: #000;
-  margin-top: 15px;
-}
-
-#dummy {
-  width: 500px;
-  height: 500px;
+	padding: 3em;
+	background: #000;
+	margin-top: 15px;
 }
 #dummy {
-  color: orangered;
+	width: 500px;
+	height: 500px;
 }
-
+#dummy {
+	color: orangered;
+}
 .hud {
-  position: relative;
-  font-size: 1.1em;
-  color: #fff;
-  text-shadow: #000 0px 0px 0.3em;
+	position: relative;
+	font-size: 1.1em;
+	color: #fff;
+	text-shadow: #000 0px 0px 0.3em;
 }
 .full {
-  padding: 0em;
-  width: 500px;
-  height: 500px;
-  border: solid 1px #000;
+	padding: 0em;
+	width: 500px;
+	height: 500px;
+	border: solid 1px #000;
 }
-
 #message {
-  top: -575px;
-  display: block;
+	top: -575px;
+	display: block;
 }
 #message a,
 #hs {
-  color: #009fa0;
+	color: #009fa0;
 }
-
 #hs {
-  cursor: pointer;
+	cursor: pointer;
 }
 #hs:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
-
 #highscores {
-  display: none;
-  top: -552px;
+	display: none;
+	top: -552px;
 }
 #highscores h3 {
-  margin: 2em 0 1em;
+	margin: 2em 0 1em;
 }
 #hscontent {
-  margin: 1em;
-  color: #eee;
-  border: solid 0px red;
-  height: 320px;
-  overflow: auto;
+	margin: 1em;
+	color: #eee;
+	border: solid 0px red;
+	height: 320px;
+	overflow: auto;
 }
 #hscontent th {
-  text-align: left;
-  color: #999;
-  padding: 0 1em 0 0;
+	text-align: left;
+	color: #999;
+	padding: 0 1em 0 0;
 }
 #hscontent td {
-  padding: 0 1em 0 0;
+	padding: 0 1em 0 0;
 }
 .ths {
-  color: orangered;
-  padding: 0 0 0 3em;
+	color: orangered;
+	padding: 0 0 0 3em;
 }
-
 #description {
-  background: rgba(60, 60, 60, 0.75);
-  color: #eee;
-  margin: 3em 0 2em;
-  padding: 1em 0;
+	background: rgba(60, 60, 60, 0.75);
+	color: #eee;
+	margin: 3em 0 2em;
+	padding: 1em 0;
 }
 #controls {
-  background: rgba(100, 100, 100, 0);
-  padding: 1em 0;
+	background: rgba(100, 100, 100, 0);
+	padding: 1em 0;
 }
-
 .action {
-  color: yellow;
+	color: yellow;
 }
-
 #over {
-  top: -400px;
-  display: none;
+	top: -400px;
+	display: none;
 }
-
 #getGamerName {
-  top: -400px;
-  display: none;
+	top: -400px;
+	display: none;
 }
-
 #pause {
-  top: -40px;
-  display: none;
-  color: #222;
+	top: -40px;
+	display: none;
+	color: #222;
 }
-
 #keyset {
-  top: -552px;
-  display: none;
+	top: -552px;
+	display: none;
 }
 #keyset ul {
-  width: 300px;
-  margin: 1em 0;
+	width: 300px;
+	margin: 1em 0;
 }
 #keyset li {
-  text-align: left;
-  list-style-type: none;
+	text-align: left;
+	list-style-type: none;
 }
 #keyset h3 {
-  margin: 3em 0 1em 0;
+	margin: 3em 0 1em 0;
 }
 #keyset .lbl {
-  width: 6em;
-  margin: 0 0.5em 0 0;
-  display: inline-block;
-  text-align: right;
-  cursor: pointer;
+	width: 6em;
+	margin: 0 0.5em 0 0;
+	display: inline-block;
+	text-align: right;
+	cursor: pointer;
 }
 #keyset .lbl:hover {
-  color: #fe4;
+	color: #fe4;
 }
 #keyset .val {
-  color: #0a0;
+	color: #0a0;
 }
 #keyset .lbl.active,
 #keyset .lbl.active:hover {
-  color: gold;
+	color: gold;
 }
 #keyset .val.active {
-  color: #0f0;
+	color: #0f0;
 }
 #keys_reset {
-  margin: 0 0 0 9em;
-  float: left;
+	margin: 0 0 0 9em;
+	float: left;
 }
-
 #score {
-  display: none;
-  position: relative;
-  top: -590px;
-  left: 1.5em;
-  padding: 0;
-  text-align: right;
-  width: 500px;
-  font-family: arial;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: #000 0px 0px 0.3em;
+	display: none;
+	position: relative;
+	top: -590px;
+	left: 1.5em;
+	padding: 0;
+	text-align: right;
+	width: 500px;
+	font-family: arial;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: #000 0px 0px 0.3em;
 }
-
 #scorelabel,
 #namelabel {
-  color: #aaa;
+	color: #aaa;
 }
 #highscore {
-  color: orangered;
+	color: orangered;
 }
 #finalscore,
 #username {
-  font-size: 1.1em;
+	font-size: 1.1em;
 }
-
 #difficulty {
-  position: relative;
-  top: -2em;
+	position: relative;
+	top: -2em;
 }
 #pieces {
-  margin: 0 0.5em 0 0;
+	margin: 0 0.1em 0 0;
 }
 #pit {
-  margin: 0 0.5em 0 0.5em;
+	margin: 0 0.1em 0 0.1em;
 }
 #speed {
-  margin: 0 0.5em 0 0.5em;
+	margin: 0 0.1em 0 0.1em;
 }
 #keys {
-  margin: 0 0 0 0.5em;
+	margin: 0 0 0 0.1em;
 }
-
 #column {
-  display: none;
-  background: transparent;
-  width: 15px;
-  height: 500px;
-  position: relative;
-  top: -575px;
-  left: -275px;
-  margin-bottom: -500px;
+	display: none;
+	background: transparent;
+	width: 15px;
+	height: 500px;
+	position: relative;
+	top: -575px;
+	left: -275px;
+	margin-bottom: -500px;
 }
-
 .button {
-  color: #444;
-  background: #000;
-  cursor: pointer;
-  padding: 0.2em 0.5em;
-  font-size: 0.66em;
-  font-weight: bold;
-  font-family: trebuchet ms;
-
-  text-shadow: 0px 1px 0px #000;
+	color: #444;
+	background: #000;
+	cursor: pointer;
+	padding: 0.1em 0.3em;
+	font-size: 0.66em;
+	font-weight: bold;
+	font-family: trebuchet ms;
+	text-shadow: 0px 1px 0px #000;
 }
-
 .xb {
-  color: #fff;
-  background: #0a0 url('button-green.png');
-  box-shadow: 2px 2px 5px #000;
-  -o-box-shadow: 2px 2px 5px #000;
-  -icab-box-shadow: 2px 2px 5px #000;
-  -khtml-box-shadow: 2px 2px 5px #000;
-  -moz-box-shadow: 2px 2px 5px #000;
-  -webkit-box-shadow: 2px 2px 5px #000;
-
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
+	color: #fff;
+	background: #0a0 url('button-green.png');
+	box-shadow: 2px 2px 5px #000;
+	-o-box-shadow: 2px 2px 5px #000;
+	-icab-box-shadow: 2px 2px 5px #000;
+	-khtml-box-shadow: 2px 2px 5px #000;
+	-moz-box-shadow: 2px 2px 5px #000;
+	-webkit-box-shadow: 2px 2px 5px #000;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
 }
 .red {
-  background: #a00 url('button-red.png');
+	background: #a00 url('button-red.png');
 }
 .gold {
-  background: #a50 url('button-gold.png');
+	background: #a50 url('button-gold.png');
 }
 .on {
-  color: #fff;
+	color: #fff;
 }
-
 #footer {
-  text-align: center;
-  font-size: 0.9em;
-  color: #666;
-  margin: 1.5em 0 2em 0;
+	text-align: center;
+	font-size: 0.9em;
+	color: #666;
+	margin: 1.5em 0 2em 0;
 }
 #footer a {
-  color: #888;
+	color: #888;
 }
-
 /* Debug */
+
 #log {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: none;
-  color: lime;
-  background: #0a0a0a;
-  font-family: trebuchet ms;
-  width: 50%;
-  padding: 1em;
-  margin: 3em 1em;
-  width: 20em;
-  height: 600px;
-  overflow: auto;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	color: lime;
+	background: #0a0a0a;
+	font-family: trebuchet ms;
+	width: 50%;
+	padding: 1em;
+	margin: 3em 1em;
+	width: 20em;
+	height: 600px;
+	overflow: auto;
 }
 #layers {
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #000;
-  font-size: 0.8em;
-  font-family: courier;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #000;
+	font-size: 0.8em;
+	font-family: courier;
 }
-
 .username-input {
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-  border-bottom: 2px solid white;
-  margin-bottom: 14px;
-  font-size: 17px;
-  color: white;
-  text-align: center;
-  padding-bottom: 3px;
-  font-weight: bolder;
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+	border-bottom: 2px solid white;
+	margin-bottom: 14px;
+	font-size: 17px;
+	color: white;
+	text-align: center;
+	padding-bottom: 3px;
+	font-weight: bolder;
 }
-
 #username-label,
 #hscontent table tr td:first-child {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
