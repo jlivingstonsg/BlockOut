@@ -226,17 +226,17 @@ h1 a:hover {
   position: relative;
   top: -2em;
 }
-#pieces { 
-margin: 0 0.1em 0 0;
+#pieces {
+  margin: 0 0.5em 0 0;
 }
-#pit { 
-margin: 0 0.1em 0 0.1em;
+#pit {
+  margin: 0 0.5em 0 0.5em;
 }
-#speed { 
-margin: 0 0.1em 0 0.1em;
+#speed {
+  margin: 0 0.5em 0 0.5em;
 }
-#keys { 
-margin: 0 0 0 0.1em;
+#keys {
+  margin: 0 0 0 0.5em;
 }
 
 #column {
@@ -254,7 +254,7 @@ margin: 0 0 0 0.1em;
   color: #444;
   background: #000;
   cursor: pointer;
-  padding: 0.1em 0.3em;
+  padding: 0.2em 0.5em;
   font-size: 0.66em;
   font-weight: bold;
   font-family: trebuchet ms;
