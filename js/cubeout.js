@@ -43,7 +43,15 @@ var SPEED_MAP = {
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
-var ANIM_DURATION = 150;
+
+
+var SLOW_ANIM_DURATION = 150;
+var MED_ANIM_DURATION = 70;
+var FAST_ANIM_DURATION = 10;
+
+var ANIM_DURATION = MED_ANIM_DURATION;
+
+
 var FRAME_DELAY = 10;
 
 var DELTA = 1;
@@ -440,13 +448,13 @@ function init_layers(layers, type) {
 
         switch (type) {
           case 1:
-            if (z > depth - 3) layers[z][y][x] = x > 0 || y > 0 ? 1 : 0;
+            if (z > depth - 3) layers[z][y][x] = (x > 0 || y > 0) ? 1 : 0;
             break;
           case 2:
-            if (z > depth - 2) layers[z][y][x] = x + y > 3;
+            if (z > depth - 2) layers[z][y][x] = (x + y) > 3;
             break;
           case 3:
-            if (z >= 0) layers[z][y][x] = (depth - z) * (width - x + (height - y) > z ? 0 : 1);
+            if (z >= 0) layers[z][y][x] = (depth - z) * ((width - x) + (height - y) > z ? 0 : 1);
             break;
           case 4:
             if (z > 1 && Math.random() > 0.95) layers[z][y][x] = c;
@@ -471,7 +479,7 @@ function pretty_number(x) {
   var strx = x.toString();
   var pretty = '';
   for (var i = strx.length - 1; i >= 0; i--) {
-    if ((strx.length - 1 - i) % 3 == 0 && strx.length - 1 - i > 0) pretty = delimiter + pretty;
+    if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0) pretty = delimiter + pretty;
     pretty = strx[i] + pretty;
   }
   return pretty;
@@ -2149,6 +2157,20 @@ function refresh_column() {
 /*****************************************************************************************/
 // Main
 /*****************************************************************************************/
+
+var rotateSpeed = "medium";
+
+function setRotateSpeed(spd) {
+    if (spd === "slow")
+        
+      ANIM_DURATION = SLOW_ANIM_DURATION;
+    else if (spd === "fast") {
+        ANIM_DURATION = FAST_ANIM_DURATION;
+    } else {
+        ANIM_DURATION = MED_ANIM_DURATION;
+    }
+}
+
 $(document).ready(function () {
   copy_keymap(KEYMAP_DEFAULT, KEYMAP);
   copy_keymap(KEYMAP, KEYMAP_TMP);
