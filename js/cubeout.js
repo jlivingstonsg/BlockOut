@@ -2203,6 +2203,18 @@ $(document).ready(function () {
     $(this).addClass('on');
   });
 
+  
+      $("#rotSpeed .button").each(function() {
+        if ($(this).text().toLowerCase() == rotateSpeed) $(this).addClass("on");
+    });
+    $("#rotSpeed .button").click(function() {
+        setRotateSpeed($(this).text().toLowerCase());
+        $("#rotSpeed .button").removeClass("on");
+        $(this).addClass("on");
+    });
+  
+  
+  
   var pit_string = PIT_WIDTH + 'x' + PIT_HEIGHT + 'x' + PIT_DEPTH;
   $('#pit .button').each(function () {
     if ($(this).text().toLowerCase() == pit_string) $(this).addClass('on');
