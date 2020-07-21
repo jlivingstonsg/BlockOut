@@ -3,7 +3,7 @@
 
 <head>
     <meta name="description" content="Remake of classic puzzle game Blockout (3d tetris) in HTML 5" />
-    <title>CubeOut</title>
+    <title>BlockOut</title>
     <link type="text/css" rel="stylesheet" href="css/cubeout.css" />
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
@@ -13,7 +13,9 @@
 <body>
 
     <center>
-        <h1><a href="/cubeout">CubeOut</a></h1>
+    <h1><a href="https://github.com/jlivingstonsg/BlockOut">BlockOut</a></h1>
+    <h3><a href="https://www.gamereality.se/">GameReality</a></h1>
+
 
         <div id="fps">&nbsp;</div>
 
@@ -37,6 +39,11 @@
                     <span class="button">0</span> <span class="button">1</span> <span class="button">2</span> <span
                         class="button">3</span> <span class="button">4</span>
                 </span>
+                
+			<span id="rotSpeed" title="Change Rotation speed"> <span class="button">Slow</span> <span 
+                class="button">Medium</span> <span  class="button">Fast</span>
+            </span>                
+                
                 <span id="keys" title="Set custom keys">
                     <span class="button">Keys</span>
                 </span>
@@ -48,7 +55,7 @@
 
             <div id="message" class="hud full">
                 <div id="description" class="shadow">
-                    Remake of <a href="http://en.wikipedia.org/wiki/Blockout">Blockout (3d tetris)</a> in HTML 5<br />
+                    Remake of <a href="http://en.wikipedia.org/wiki/Blockout">Blockout (3d Tetris)</a> in HTML5 from 1989.  <br />
                     <small><br />Works in Firefox, Chrome, Opera and Safari<br />
                         Best performance in Chrome and Opera</small>
                 </div>
@@ -64,7 +71,7 @@
                     <span class="action">Press space to start</span>
                 </div>
 
-                <span id="hs">High scores</span>
+                <span id="hs">High Scores</span>
             </div>
 
             <div id="keyset" class="hud full">
@@ -90,14 +97,14 @@
             </div>
 
             <div id="highscores" class="hud full">
-                <h3>High scores</h3>
+                <h3>High Scores</h3>
                 <small>On this computer and browser</small>
                 <div id="hscontent"></div>
                 <span class="button xb" id="hs_back">Back</span>
             </div>
 
             <div id="getGamerName" class="hud">
-                <h2>Game over</h2>
+                <h2>Game Over</h2>
                 <br />
                 <input name="username" placeholder="Name" class="username-input" id="username" autocomplete="off" autofocus>
                 <br />
@@ -121,9 +128,9 @@
         </div>
 
         <div id="footer">
-            <small><a href="mailto:postfilter@gmail.com">Feedback</a><br /><a
-                    href="http://twitter.com/alteredq">Twitter</a><br /><a
-                    href="https://github.com/Ringdingcoder/CubeOut/">Source</a></small>
+            <small><a href="mailto:gamereality@gmail.com">Feedback</a><br/>
+                   <a href="https://twitter.com/jlivingstonsg">Twitter</a><br/>
+                   <a href="https://github.com/Ringdingcoder/CubeOut/">Source</a></small>
         </div>
     </center>
 
