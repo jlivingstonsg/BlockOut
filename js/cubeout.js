@@ -635,8 +635,8 @@ function point3d(ctx, cwidth, cheight, width, height, s, color, radius) {
 function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
   if (CACHE_PIT == 0 || refresh_flag) {
     // colors
-    var color1 = '#555555'; // gradient start
-    var color2 = '#000000'; // gradient end
+    var color1 = '#00ff0f'; // gradient start
+    var color2 = '#00ff00'; // gradient end
     var bgcolor = BG_COLOR; // pit background
 
     var cwidth = canvas.width;
