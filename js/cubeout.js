@@ -3,7 +3,7 @@
 /*****************************************************************************************/
 
 // canvas dimensions
-var WIDTH = 800;
+var WIDTH = 500;
 var HEIGHT = 500;
 
 // pit dimensions
