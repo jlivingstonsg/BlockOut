@@ -17,14 +17,14 @@ var ZSIZE_Y = 30;
 
 // color constants
 var PIECE_COLOR = [50, 0, 90];
-var BG_COLOR = "#000";
+var BG_COLOR = '#000';
 
 // cube rendering style
 var CUBE_PLAIN = 0,
     CUBE_GRADIENT = 1;
 
 var CUBE_STYLE = CUBE_PLAIN;
-var CUBE_OUTLINE = "#000";
+var CUBE_OUTLINE = '#000';
 
 var FORCE_DEPTH_COLOR = 1;
 
@@ -58,325 +58,325 @@ var DELTA = 1;
 var DELTA_ANGLE = Math.PI / 2;
 
 // pieces
-var SET = "basic";
+var SET = 'basic';
 
 // piece shapes
 var TEMPLATES = {
     // 2D polyominoes
     flat: [
         [
-            ["x"]
+            ['x']
         ],
 
         [
-            ["xx"]
+            ['xx']
         ],
 
         [
-            ["xxx"]
+            ['xxx']
         ],
 
         [
-            ["xx", "x "]
+            ['xx', 'x ']
         ],
 
         [
-            ["xx", "xx"]
+            ['xx', 'xx']
         ],
 
         [
-            ["xxx", " x "]
+            ['xxx', ' x ']
         ],
 
         [
-            ["xx ", " xx"]
+            ['xx ', ' xx']
         ],
 
         [
-            ["xxx", "x  "]
+            ['xxx', 'x  ']
         ],
     ],
 
     // Polycubes of order three or four
     basic: [
         [
-            ["xx", "x "]
+            ['xx', 'x ']
         ],
 
         [
-            ["xxx", " x "]
+            ['xxx', ' x ']
         ],
 
         [
-            ["xx ", " xx"]
+            ['xx ', ' xx']
         ],
 
         [
-            ["xxx", "x  "]
+            ['xxx', 'x  ']
         ],
 
         [
-            ["xx", "x "],
-            [" x", "  "],
+            ['xx', 'x '],
+            [' x', '  '],
         ],
 
         [
-            ["xx", "x "],
-            ["  ", "x "],
+            ['xx', 'x '],
+            ['  ', 'x '],
         ],
 
         [
-            ["xx", "x "],
-            ["x ", "  "],
+            ['xx', 'x '],
+            ['x ', '  '],
         ],
     ],
 
     // All n-polycubes up to n=5
     extended: [
         [
-            ["x"]
+            ['x']
         ],
 
         [
-            ["xx"]
+            ['xx']
         ],
 
         [
-            ["xxx"]
+            ['xxx']
         ],
 
         [
-            ["xxxx"]
+            ['xxxx']
         ],
 
         [
-            ["xxxxx"]
+            ['xxxxx']
         ],
 
         [
-            ["xx", "x "]
+            ['xx', 'x ']
         ],
 
         [
-            ["xx", "xx"]
+            ['xx', 'xx']
         ],
 
         [
-            ["xxx", " x "]
+            ['xxx', ' x ']
         ],
 
         [
-            ["xx ", " xx"]
+            ['xx ', ' xx']
         ],
 
         [
-            ["xxx", "x  "]
+            ['xxx', 'x  ']
         ],
 
         [
-            ["xxx", "x  ", "x  "]
+            ['xxx', 'x  ', 'x  ']
         ],
 
         [
-            ["xxx", " x ", " x "]
+            ['xxx', ' x ', ' x ']
         ],
 
         [
-            [" x ", "xx ", " xx"]
+            [' x ', 'xx ', ' xx']
         ],
 
         [
-            ["xx ", " x ", " xx"]
+            ['xx ', ' x ', ' xx']
         ],
 
         [
-            ["x  ", "xx ", " xx"]
+            ['x  ', 'xx ', ' xx']
         ],
 
         [
-            ["x   ", "xxxx"]
+            ['x   ', 'xxxx']
         ],
 
         [
-            [" x  ", "xxxx"]
+            [' x  ', 'xxxx']
         ],
 
         [
-            ["x x", "xxx"]
+            ['x x', 'xxx']
         ],
 
         [
-            ["xx ", "xxx"]
+            ['xx ', 'xxx']
         ],
 
         [
-            ["  xx", "xxx "]
+            ['  xx', 'xxx ']
         ],
 
         [
-            [" x ", "xxx", " x "]
+            [' x ', 'xxx', ' x ']
         ],
 
         [
-            ["xxx", "x  "],
-            ["   ", "x  "],
+            ['xxx', 'x  '],
+            ['   ', 'x  '],
         ],
 
         [
-            ["xxx", "  x"],
-            ["   ", "  x"],
+            ['xxx', '  x'],
+            ['   ', '  x'],
         ],
 
         [
-            ["xxx", " x "],
-            ["   ", " x "],
+            ['xxx', ' x '],
+            ['   ', ' x '],
         ],
 
         [
-            ["xxx", "x  "],
-            [" x ", "   "],
+            ['xxx', 'x  '],
+            [' x ', '   '],
         ],
 
         [
-            ["xxx", "  x"],
-            [" x ", "   "],
+            ['xxx', '  x'],
+            [' x ', '   '],
         ],
 
         [
-            ["xx ", " xx"],
-            ["x  ", "   "],
+            ['xx ', ' xx'],
+            ['x  ', '   '],
         ],
 
         [
-            [" xx", "xx "],
-            ["  x", "   "],
+            [' xx', 'xx '],
+            ['  x', '   '],
         ],
 
         [
-            [" x ", "xx "],
-            [" xx", "   "],
+            [' x ', 'xx '],
+            [' xx', '   '],
         ],
 
         [
-            [" x ", " xx"],
-            ["xx ", "   "],
+            [' x ', ' xx'],
+            ['xx ', '   '],
         ],
 
         [
-            ["xxx", "  x"],
-            ["x  ", "   "],
+            ['xxx', '  x'],
+            ['x  ', '   '],
         ],
 
         [
-            ["xxx", "x  "],
-            ["  x", "   "],
+            ['xxx', 'x  '],
+            ['  x', '   '],
         ],
 
         [
-            ["xx", "x "],
-            [" x", "  "],
+            ['xx', 'x '],
+            [' x', '  '],
         ],
 
         [
-            ["xx", "x "],
-            ["  ", "x "],
+            ['xx', 'x '],
+            ['  ', 'x '],
         ],
 
         [
-            ["xx", "x "],
-            ["x ", "  "],
+            ['xx', 'x '],
+            ['x ', '  '],
         ],
 
         [
-            ["xxx", " x "],
-            [" x ", "   "],
+            ['xxx', ' x '],
+            [' x ', '   '],
         ],
 
         [
-            ["xx", "xx"],
-            ["x ", "  "],
+            ['xx', 'xx'],
+            ['x ', '  '],
         ],
 
         [
-            ["xxx", "x  "],
-            ["x  ", "   "],
+            ['xxx', 'x  '],
+            ['x  ', '   '],
         ],
 
         [
-            [" xx", " x "],
-            ["xx ", "   "],
+            [' xx', ' x '],
+            ['xx ', '   '],
         ],
 
         [
-            ["xx ", " x "],
-            [" xx", "   "],
+            ['xx ', ' x '],
+            [' xx', '   '],
         ],
 
         [
-            ["xx", " x"],
-            ["  ", "xx"],
+            ['xx', ' x'],
+            ['  ', 'xx'],
         ],
     ],
 };
 
 // controls
 var KEYCODES = {
-    8: "backspace",
-    9: "tab",
-    13: "enter",
-    16: "shift",
-    17: "control",
-    18: "alt",
-    20: "caps lock",
-    27: "escape",
-    32: "space",
-    33: "page up",
-    34: "page down",
-    35: "end",
-    36: "home",
-    37: "left arrow",
-    38: "up arrow",
-    39: "right arrow",
-    40: "down arrow",
-    45: "insert",
-    46: "delete",
-    59: ";",
-    188: ",",
-    189: "-",
-    190: ".",
-    191: "/",
+    8: 'backspace',
+    9: 'tab',
+    13: 'enter',
+    16: 'shift',
+    17: 'control',
+    18: 'alt',
+    20: 'caps lock',
+    27: 'escape',
+    32: 'space',
+    33: 'page up',
+    34: 'page down',
+    35: 'end',
+    36: 'home',
+    37: 'left arrow',
+    38: 'up arrow',
+    39: 'right arrow',
+    40: 'down arrow',
+    45: 'insert',
+    46: 'delete',
+    59: ';',
+    188: ',',
+    189: '-',
+    190: '.',
+    191: '/',
 };
 
 var KEYMAP_DEFAULT = {
-    "X+": 39, // right
-    "X-": 37, // left
-    "Y+": 40, // down
-    "Y-": 38, // up
-    "Z+": 90, // y
-    "Z-": 88, // x
+    'X+': 39, // right
+    'X-': 37, // left
+    'Y+': 40, // down
+    'Y-': 38, // up
+    'Z+': 90, // y
+    'Z-': 88, // x
 
-    "A+": 81, // q
-    "A-": 65, // a
-    "B-": 87, // w
-    "B+": 83, // s
-    "C+": 68, // d
-    "C-": 69, // e
+    'A+': 81, // q
+    'A-': 65, // a
+    'B-': 87, // w
+    'B+': 83, // s
+    'C+': 68, // d
+    'C-': 69, // e
 
     D: 32, // space
 };
 
 var LABELMAP = {
-    right: "X+",
-    left: "X-",
-    up: "Y-",
-    down: "Y+",
-    "rotate X+": "A+",
-    "rotate X-": "A-",
-    "rotate Y+": "B+",
-    "rotate Y-": "B-",
-    "rotate Z+": "C+",
-    "rotate Z-": "C-",
-    drop: "D",
+    right: 'X+',
+    left: 'X-',
+    up: 'Y-',
+    down: 'Y+',
+    'rotate X+': 'A+',
+    'rotate X-': 'A-',
+    'rotate Y+': 'B+',
+    'rotate Y-': 'B-',
+    'rotate Z+': 'C+',
+    'rotate Z-': 'C-',
+    drop: 'D',
 };
 
 var KEYMAP = {};
@@ -414,7 +414,7 @@ var DP = 0;
 var HIGHSCORE = {};
 
 // username
-var USERNAME = "";
+var USERNAME = '';
 
 // end game context
 var CANVAS;
@@ -543,9 +543,9 @@ function rand_range(lo, hi) {
 // Text
 /*****************************************************************************************/
 function pretty_number(x) {
-    var delimiter = """;
+    var delimiter = "'";
     var strx = x.toString();
-    var pretty = "";
+    var pretty = '';
     for (var i = strx.length - 1; i >= 0; i--) {
         if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0) pretty = delimiter + pretty;
         pretty = strx[i] + pretty;
@@ -730,8 +730,8 @@ function point3d(ctx, cwidth, cheight, width, height, s, color, radius) {
 function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
     if (CACHE_PIT == 0 || refresh_flag) {
         // colors
-        var color1 = "#00ff0f"; // gradient start
-        var color2 = "#00ff00"; // gradient end
+        var color1 = '#00ff0f'; // gradient start
+        var color2 = '#00ff00'; // gradient end
         var bgcolor = BG_COLOR; // pit background
 
         var cwidth = canvas.width;
@@ -757,13 +757,13 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
             g = 255;
             b = 0;
 
-            ctx.strokeStyle = "rgb(" + r + "," + g + "," + b + ")";
+            ctx.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
             //b = Math.floor(64*(0.1+1*(depth-z)/depth));
             //ctx.strokeStyle = "hsl(0,90%,"+b+"%)";
 
             ctx.strokeRect(offsetx, offsety, cwidth - 2 * offsetx, cheight - 2 * offsety);
             if (z == depth) {
-                ctx.fillStyle = "#000";
+                ctx.fillStyle = '#000';
                 ctx.fillRect(offsetx, offsety, cwidth - 2 * offsetx, cheight - 2 * offsety);
             }
         }
@@ -838,13 +838,13 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
         ctx.stroke();
 
         if (CACHE_PIT == 0) {
-            var cache = $("<canvas></canvas>");
-            cache.css("display", "none");
-            $("body").append(cache);
-            cache.attr("width", cwidth).attr("height", cheight);
+            var cache = $('<canvas></canvas>');
+            cache.css('display', 'none');
+            $('body').append(cache);
+            cache.attr('width', cwidth).attr('height', cheight);
             CACHE_PIT = cache.get(0);
         }
-        CACHE_PIT.getContext("2d").drawImage(canvas, 0, 0);
+        CACHE_PIT.getContext('2d').drawImage(canvas, 0, 0);
     } else {
         ctx.drawImage(CACHE_PIT, 0, 0);
     }
@@ -897,27 +897,27 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
 
     var lightness = (0.3 + (0.7 * (depth - z)) / depth) * color[2];
     var topcolor =
-        "hsla(" + Math.floor(color[0]) + "," + Math.floor(color[1]) + "%," + Math.floor(lightness) + "%," + color[3] + ")";
+        'hsla(' + Math.floor(color[0]) + ',' + Math.floor(color[1]) + '%,' + Math.floor(lightness) + '%,' + color[3] + ')';
     var sidecolor =
-        "hsla(" +
+        'hsla(' +
         Math.floor(color[0]) +
-        "," +
+        ',' +
         Math.floor(color[1]) +
-        "%," +
+        '%,' +
         Math.floor(0.75 * lightness) +
-        "%," +
+        '%,' +
         color[3] +
-        ")";
+        ')';
     var sidecolor2 =
-        "hsla(" +
+        'hsla(' +
         Math.floor(color[0]) +
-        "," +
+        ',' +
         Math.floor(color[1]) +
-        "%," +
+        '%,' +
         Math.floor(0.5 * lightness) +
-        "%," +
+        '%,' +
         color[3] +
-        ")";
+        ')';
 
     var render_style = CUBE_STYLE;
 
@@ -1008,20 +1008,20 @@ function render_shadow(canvas, ctx, margin, refresh_flag) {
         var cheight = canvas.height;
 
         if (CACHE_SHADOW == 0) {
-            var cache = $("<canvas></canvas>");
-            cache.css("display", "none");
-            $("body").append(cache);
-            cache.attr("width", cwidth).attr("height", cheight);
+            var cache = $('<canvas></canvas>');
+            cache.css('display', 'none');
+            $('body').append(cache);
+            cache.attr('width', cwidth).attr('height', cheight);
             CACHE_SHADOW = cache.get(0);
         }
 
-        var cache_ctx = CACHE_SHADOW.getContext("2d");
+        var cache_ctx = CACHE_SHADOW.getContext('2d');
 
         var sx = 0;
         var sy = 0;
 
-        var start = "rgba(0,0,0,0.5)";
-        var end = "rgba(0,0,0,0)";
+        var start = 'rgba(0,0,0,0.5)';
+        var end = 'rgba(0,0,0,0)';
 
         // top
         var lingrad = ctx.createLinearGradient(sx, sy, sx, margin);
@@ -1056,7 +1056,7 @@ function render_shadow(canvas, ctx, margin, refresh_flag) {
 }
 
 function render_layer(canvas, ctx, layer, z, outline, depth) {
-    var row = "";
+    var row = '';
     var color;
 
     var force_color = FORCE_DEPTH_COLOR;
@@ -1066,7 +1066,7 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
     for (var y = 0; y < layer.length; ++y) {
         row = layer[y];
         for (var x = 0; x < row.length; ++x) {
-            if (row[x] != "0") {
+            if (row[x] != '0') {
                 if (x > 0) faces[2] = !parseInt(row[x - 1]);
                 if (x < row.length - 1) faces[0] = !parseInt(row[x + 1]);
                 if (y > 0) faces[3] = !parseInt(layer[y - 1][x]);
@@ -1086,7 +1086,7 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
     for (var y = 0; y < layer.length; ++y) {
         row = layer[y];
         for (var x = 0; x < row.length; ++x) {
-            if (row[x] != "0") {
+            if (row[x] != '0') {
                 if (force_color) color = depth - z - 1;
                 else color = row[x] - 1;
                 render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
@@ -1105,13 +1105,13 @@ function render_layers(canvas, ctx, layers, refresh_flag) {
         for (var i = layers.length - 1; i >= 0; --i) render_layer(canvas, ctx, layers[i], i, outline, layers.length);
 
         if (CACHE_LAYERS == 0) {
-            var cache = $("<canvas></canvas>");
-            cache.css("display", "none");
-            $("body").append(cache);
-            cache.attr("width", canvas.width).attr("height", canvas.height);
+            var cache = $('<canvas></canvas>');
+            cache.css('display', 'none');
+            $('body').append(cache);
+            cache.attr('width', canvas.width).attr('height', canvas.height);
             CACHE_LAYERS = cache.get(0);
         }
-        CACHE_LAYERS.getContext("2d").drawImage(canvas, 0, 0);
+        CACHE_LAYERS.getContext('2d').drawImage(canvas, 0, 0);
         STATE.refresh_layers_flag = 0;
     } else {
         ctx.drawImage(CACHE_LAYERS, 0, 0);
@@ -1125,8 +1125,8 @@ function generate_piece(shape) {
     var voxels = [];
 
     function add_line(a, b) {
-        var linehash1 = "#" + a[0] + "#" + a[1] + "#" + a[2] + "#" + b[0] + "#" + b[1] + "#" + b[2];
-        var linehash2 = "#" + b[0] + "#" + b[1] + "#" + b[2] + "#" + a[0] + "#" + a[1] + "#" + a[2];
+        var linehash1 = '#' + a[0] + '#' + a[1] + '#' + a[2] + '#' + b[0] + '#' + b[1] + '#' + b[2];
+        var linehash2 = '#' + b[0] + '#' + b[1] + '#' + b[2] + '#' + a[0] + '#' + a[1] + '#' + a[2];
         if (map[linehash1] == undefined && map[linehash2] == undefined)
             map[linehash1] = [
                 [a[0], a[1], a[2]],
@@ -1143,7 +1143,7 @@ function generate_piece(shape) {
         for (var y = 0; y < layer.length; ++y) {
             row = layer[y];
             for (var x = 0; x < row.length; ++x) {
-                if (row[x] != " ") {
+                if (row[x] != ' ') {
                     // top face
                     add_line([x, y, z], [x + 1, y, z]);
                     add_line([x + 1, y, z], [x + 1, y + 1, z]);
@@ -1189,7 +1189,7 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
       var c = "rgb("+r+","+g+","+b+")";
       */
     var l = 0.25 * (2 + (2 * (depth - z)) / depth);
-    var c = "hsl(" + color[0] + "," + color[1] + "%," + l * color[2] + "%)";
+    var c = 'hsl(' + color[0] + ',' + color[1] + '%,' + l * color[2] + '%)';
 
     var p1, p2, r1, r2;
     for (var i = 0; i < piece.lines.length; ++i) {
@@ -1218,7 +1218,7 @@ function render_pit(canvas, ctx) {
     render_layers(canvas, ctx, LAYERS, 1);
 
     // transparent overlay layer below shadow
-    ctx.fillStyle = "rgba(25,25,25,0.75)";
+    ctx.fillStyle = 'rgba(25,25,25,0.75)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     render_shadow(canvas, ctx, 100, 0, 1);
@@ -1335,18 +1335,18 @@ function dump_layers(layers) {
     var height = layers[0].length;
     var width = layers[0][0].length;
 
-    var tmp = "";
+    var tmp = '';
     for (var z = 0; z < depth; ++z) {
         for (var y = 0; y < height; ++y) {
             for (var x = 0; x < width; ++x) {
                 tmp += layers[z][y][x];
             }
-            tmp += "<br/>";
+            tmp += '<br/>';
         }
-        tmp += z + "<br/>";
+        tmp += z + '<br/>';
     }
 
-    $("#layers").html(tmp);
+    $('#layers').html(tmp);
 }
 
 function remove_layer(layers, n) {
@@ -1385,8 +1385,8 @@ function check_full_layers(layers, counts) {
 // Utils
 /*****************************************************************************************/
 function log(text) {
-    $("#log").css("display", "block");
-    $("#log").append(text + "<br/>");
+    $('#log').css('display', 'block');
+    $('#log').append(text + '<br/>');
 }
 
 /*****************************************************************************************/
@@ -1394,7 +1394,7 @@ function log(text) {
 /*****************************************************************************************/
 function test_cubes(canvas, ctx) {
     var faces = [1, 1, 1, 1, 1];
-    var outline = "#000";
+    var outline = '#000';
 
     render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, [0, 100, 50, 1.0], faces, outline);
     render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 4, 0, 0, [60, 100, 50, 1.0], faces, outline);
@@ -1420,10 +1420,10 @@ function test_cubes(canvas, ctx) {
 }
 
 function test_layer(canvas, ctx) {
-    var layer0 = ["11122", "30012", "30002", "30004", "00004"];
-    var layer1 = ["11122", "31112", "32022", "31044", "11144"];
-    var layer2 = ["11122", "01112", "32002", "30044", "00004"];
-    render_layer(canvas, ctx, layer1, 9, "#000");
+    var layer0 = ['11122', '30012', '30002', '30004', '00004'];
+    var layer1 = ['11122', '31112', '32022', '31044', '11144'];
+    var layer2 = ['11122', '01112', '32002', '30044', '00004'];
+    render_layer(canvas, ctx, layer1, 9, '#000');
     /*
       render_layer(canvas, ctx, layer1, 8, "#000");
       render_layer(canvas, ctx, layer1, 7, "#000");
@@ -1436,7 +1436,7 @@ function test_layer(canvas, ctx) {
       render_layer(canvas, ctx, layer0, 0, "#000");
       */
 
-    render_piece(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, PIECES["flat"][0], [0, 0, 0], PIECE_COLOR);
+    render_piece(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, PIECES['flat'][0], [0, 0, 0], PIECE_COLOR);
 
     //render_shadow(canvas, ctx, 100);
 }
@@ -1446,13 +1446,13 @@ function test_cache(canvas, ctx) {
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
     var end = new Date().getTime();
 
-    log("pit uncached: " + (end - start) + "ms");
+    log('pit uncached: ' + (end - start) + 'ms');
 
     var start = new Date().getTime();
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
     var end = new Date().getTime();
 
-    log("pit cached: " + (end - start) + "ms");
+    log('pit cached: ' + (end - start) + 'ms');
 
     //test_cubes(canvas, ctx);
 
@@ -1460,12 +1460,12 @@ function test_cache(canvas, ctx) {
     //test_layer(canvas, ctx);
     render_layers(canvas, ctx, LAYERS);
     var end = new Date().getTime();
-    log("layer uncached: " + (end - start) + "ms");
+    log('layer uncached: ' + (end - start) + 'ms');
 
     var start = new Date().getTime();
     render_layers(canvas, ctx, LAYERS);
     var end = new Date().getTime();
-    log("layer cached: " + (end - start) + "ms");
+    log('layer cached: ' + (end - start) + 'ms');
 }
 
 /*****************************************************************************************/
@@ -1499,9 +1499,9 @@ function pause(canvas, ctx) {
         STATE.paused = 0;
         STATE.pause_ended_flag = 1;
 
-        $("#score").css("display", "block");
-        $("#column").css("display", "block");
-        $("#pause").css("display", "none");
+        $('#score').css('display', 'block');
+        $('#column').css('display', 'block');
+        $('#pause').css('display', 'none');
     } else {
         clearTimeout(ID1);
         clearTimeout(ID2);
@@ -1518,7 +1518,7 @@ function pause(canvas, ctx) {
                 r,
                 c,
                 h = rand_range(0, 360);
-            var bg = "hsl(" + ((h + 30) % 360) + ",90%,5%)";
+            var bg = 'hsl(' + ((h + 30) % 360) + ',90%,5%)';
             var zsort = function(a, b) {
                 return b[2] - a[2];
             };
@@ -1528,9 +1528,9 @@ function pause(canvas, ctx) {
             PAUSE_WORMS = rand_range(0, 1);
 
             if (PAUSE_WORMS) {
-                c = "hsla(" + h + ",90%,50%,0.5)";
-                bg = "rgba(0,0,0,0.07)";
-                ctx.fillStyle = "#000";
+                c = 'hsla(' + h + ',90%,50%,0.5)';
+                bg = 'rgba(0,0,0,0.07)';
+                ctx.fillStyle = '#000';
                 ctx.fillRect(0, 0, WIDTH, HEIGHT);
                 n = rand_range(0, 1);
             }
@@ -1542,10 +1542,10 @@ function pause(canvas, ctx) {
                 if (!PAUSE_WORMS) PAUSE_ELEMENTS.sort(zsort);
                 for (i = 0; i < N_ELEMENTS; ++i) {
                     if (!PAUSE_WORMS)
-                        c = "hsl(" + h + ",90%," + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + "%)";
+                        c = 'hsl(' + h + ',90%,' + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + '%)';
                     else {
                         d = 20 * PAUSE_ELEMENTS[i][n];
-                        c = "hsla(" + ((h + d).toFixed(0) % 360) + ",90%,50%,0.5)";
+                        c = 'hsla(' + ((h + d).toFixed(0) % 360) + ',90%,50%,0.5)';
                     }
 
                     r = cap((10 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH, 10);
@@ -1575,7 +1575,7 @@ function pause(canvas, ctx) {
                 if (!PAUSE_WORMS) render_shadow(canvas, ctx, 100);
             }, FRAME_DELAY);
 
-            $("#footer").css("display", "none");
+            $('#footer').css('display', 'none');
         }
 
         // simple static random cubes
@@ -1589,9 +1589,9 @@ function pause(canvas, ctx) {
             render_shadow(canvas, ctx, 100);
         }
 
-        $("#score").css("display", "none");
-        $("#column").css("display", "none");
-        $("#pause").css("display", "block");
+        $('#score').css('display', 'none');
+        $('#column').css('display', 'none');
+        $('#pause').css('display', 'block');
     }
 }
 
@@ -1619,7 +1619,7 @@ function init_game_keys(canvas, ctx) {
 }
 
 function end_game(canvas, ctx) {
-    $(document).unbind("keydown");
+    $(document).unbind('keydown');
     set_ui_gameover();
     CANVAS = canvas;
     CTX = ctx;
@@ -1662,65 +1662,65 @@ function handle_key(e, canvas, ctx) {
 
     switch (e.which) {
         // translations
-        case KEYMAP["X+"]:
+        case KEYMAP['X+']:
             translate_flag = 1;
             dx = DELTA;
             break;
-        case KEYMAP["X-"]:
+        case KEYMAP['X-']:
             translate_flag = 1;
             dx = -DELTA;
             break;
-        case KEYMAP["Y+"]:
+        case KEYMAP['Y+']:
             translate_flag = 1;
             dy = DELTA;
             break;
-        case KEYMAP["Y-"]:
+        case KEYMAP['Y-']:
             translate_flag = 1;
             dy = -DELTA;
             break;
-        case KEYMAP["Z+"]:
+        case KEYMAP['Z+']:
             translate_flag = 1;
             dz = DELTA;
             break;
-        case KEYMAP["Z-"]:
+        case KEYMAP['Z-']:
             translate_flag = 1;
             dz = -DELTA;
             break;
 
             // rotations
-        case KEYMAP["A+"]:
+        case KEYMAP['A+']:
             rotate_flag = 1;
             da[0] = DELTA_ANGLE;
             rot = rotx;
             break;
-        case KEYMAP["A-"]:
+        case KEYMAP['A-']:
             rotate_flag = 1;
             da[0] = -DELTA_ANGLE;
             rot = invert(rotx);
             break;
-        case KEYMAP["B+"]:
+        case KEYMAP['B+']:
             rotate_flag = 1;
             da[1] = DELTA_ANGLE;
             rot = roty;
             break;
-        case KEYMAP["B-"]:
+        case KEYMAP['B-']:
             rotate_flag = 1;
             da[1] = -DELTA_ANGLE;
             rot = invert(roty);
             break;
-        case KEYMAP["C+"]:
+        case KEYMAP['C+']:
             rotate_flag = 1;
             da[2] = DELTA_ANGLE;
             rot = rotz;
             break;
-        case KEYMAP["C-"]:
+        case KEYMAP['C-']:
             rotate_flag = 1;
             da[2] = -DELTA_ANGLE;
             rot = invert(rotz);
             break;
 
             // space
-        case KEYMAP["D"]:
+        case KEYMAP['D']:
             drop_flag = 1;
             break;
 
@@ -1777,7 +1777,7 @@ function handle_key(e, canvas, ctx) {
 }
 
 function play_game(canvas, ctx, start_handler) {
-    $(document).unbind("keydown", start_handler);
+    $(document).unbind('keydown', start_handler);
     set_ui_game();
     reset_pit(0);
     refresh_column();
@@ -1973,7 +1973,7 @@ function change_set(el) {
 }
 
 function change_pit(el, canvas, ctx) {
-    var dimensions = el.innerHTML.toLowerCase().split("x");
+    var dimensions = el.innerHTML.toLowerCase().split('x');
     PIT_WIDTH = parseInt(dimensions[0]);
     PIT_HEIGHT = parseInt(dimensions[1]);
     PIT_DEPTH = parseInt(dimensions[2]);
@@ -2017,48 +2017,48 @@ function reset_allowed() {
 /*****************************************************************************************/
 function set_ui_start() {
     STATE.setkeys = 0;
-    $(".hud").css("display", "none");
-    $("#column").css("display", "none");
-    $("#footer").css("display", "block");
-    $("#message").css("display", "block");
-    $("#difficulty").css("display", "block");
+    $('.hud').css('display', 'none');
+    $('#column').css('display', 'none');
+    $('#footer').css('display', 'block');
+    $('#message').css('display', 'block');
+    $('#difficulty').css('display', 'block');
 }
 
 function set_ui_game() {
-    $(".hud").css("display", "none");
-    $("#footer").css("display", "none");
-    $("#score").css("display", "block");
-    $("#column").css("display", "block");
+    $('.hud').css('display', 'none');
+    $('#footer').css('display', 'none');
+    $('#score').css('display', 'block');
+    $('#column').css('display', 'block');
 }
 
 function set_ui_gameover() {
-    $("#column").css("display", "none");
-    $(".hud").css("display", "none");
-    $("#score").css("display", "none");
-    $("#over").css("display", "none");
-    $("#footer").css("display", "block");
-    $("#getGamerName").css("display", "block");
-    $("#difficulty").css("display", "block");
+    $('#column').css('display', 'none');
+    $('.hud').css('display', 'none');
+    $('#score').css('display', 'none');
+    $('#over').css('display', 'none');
+    $('#footer').css('display', 'block');
+    $('#getGamerName').css('display', 'block');
+    $('#difficulty').css('display', 'block');
 }
 
 function refresh_score() {
-    $("#score").text(pretty_number(STATE.score));
+    $('#score').text(pretty_number(STATE.score));
 }
 
 /*****************************************************************************************/
 // Settings
 /*****************************************************************************************/
 function save_settings() {
-    var tmp = SET + ":" + PIT_WIDTH + ":" + PIT_HEIGHT + ":" + PIT_DEPTH + ":" + SPEED;
-    $.cookie("co_settings", tmp, {
+    var tmp = SET + ':' + PIT_WIDTH + ':' + PIT_HEIGHT + ':' + PIT_DEPTH + ':' + SPEED;
+    $.cookie('co_settings', tmp, {
         expires: 10000
     });
 }
 
 function load_settings() {
-    var tmp = $.cookie("co_settings");
+    var tmp = $.cookie('co_settings');
     if (tmp) {
-        var chunks = tmp.split(":");
+        var chunks = tmp.split(':');
         var set = chunks[0];
         if (TEMPLATES[set] != undefined) SET = set;
 
@@ -2081,9 +2081,9 @@ function pretty_key(keycode) {
 }
 
 function reset_key_labels() {
-    $("#keyset .lbl").each(function() {
+    $('#keyset .lbl').each(function() {
         var label = $(this).text();
-        var val = $(this).parent().find(".val");
+        var val = $(this).parent().find('.val');
         val.text(pretty_key(KEYMAP_TMP[LABELMAP[label]]));
     });
 }
@@ -2092,16 +2092,16 @@ function set_key(keycode) {
     if (LAST_KEY_EL) {
         var label = LAST_KEY_EL.text();
         KEYMAP_TMP[LABELMAP[label]] = keycode;
-        LAST_KEY_EL.parent().find(".val").text(pretty_key(keycode));
+        LAST_KEY_EL.parent().find('.val').text(pretty_key(keycode));
     }
 }
 
 function new_key(el) {
     LAST_KEY_EL = el;
-    $("#keyset .val").removeClass("active");
-    $("#keyset .lbl").removeClass("active");
-    LAST_KEY_EL.addClass("active");
-    LAST_KEY_EL.parent().find(".val").addClass("active");
+    $('#keyset .val').removeClass('active');
+    $('#keyset .lbl').removeClass('active');
+    LAST_KEY_EL.addClass('active');
+    LAST_KEY_EL.parent().find('.val').addClass('active');
 }
 
 function copy_keymap(src, dst) {
@@ -2119,19 +2119,19 @@ function reset_keys() {
 
 function save_keys() {
     var tmp = [];
-    for (var i in KEYMAP) tmp.push(i + ":" + KEYMAP[i]);
-    $.cookie("co_keymap", tmp.join("|"), {
+    for (var i in KEYMAP) tmp.push(i + ':' + KEYMAP[i]);
+    $.cookie('co_keymap', tmp.join('|'), {
         expires: 10000
     });
 }
 
 function load_keys() {
-    var tmp = $.cookie("co_keymap");
+    var tmp = $.cookie('co_keymap');
     if (tmp) {
         KEYMAP = {};
-        var key = tmp.split("|");
+        var key = tmp.split('|');
         for (var i = 0; i < key.length; ++i) {
-            var chunks = key[i].split(":");
+            var chunks = key[i].split(':');
             var label = chunks[0];
             var value = parseInt(chunks[1]);
             KEYMAP[label] = value;
@@ -2142,9 +2142,9 @@ function load_keys() {
 function change_keys(canvas, ctx) {
     STATE.setkeys = 1;
 
-    $(".hud").css("display", "none");
-    $("#score").css("display", "none");
-    $("#keyset").css("display", "block");
+    $('.hud').css('display', 'none');
+    $('#score').css('display', 'none');
+    $('#keyset').css('display', 'block');
 
     copy_keymap(KEYMAP, KEYMAP_TMP);
     reset_key_labels();
@@ -2154,26 +2154,26 @@ function change_keys(canvas, ctx) {
 // Highscore
 /*****************************************************************************************/
 function difhash(set, width, height, depth, speed) {
-    return width + "x" + height + "x" + depth + ":" + set[0] + ":" + speed;
+    return width + 'x' + height + 'x' + depth + ':' + set[0] + ':' + speed;
 }
 
 function save_score() {
     var tmp = [];
     for (var name in HIGHSCORE) {
-        tmp.push(name + "|" + HIGHSCORE[name].mode + "|" + HIGHSCORE[name].score);
+        tmp.push(name + '|' + HIGHSCORE[name].mode + '|' + HIGHSCORE[name].score);
     }
-    $.cookie("co_highscore", tmp.join(","), {
+    $.cookie('co_highscore', tmp.join(','), {
         expires: 10000
     });
 }
 
 function load_score() {
-    var tmp = $.cookie("co_highscore");
+    var tmp = $.cookie('co_highscore');
     if (tmp) {
         HIGHSCORE = {};
-        var hs = tmp.split(",");
+        var hs = tmp.split(',');
         for (var i = 0; i < hs.length; ++i) {
-            var chunks = hs[i].split("|");
+            var chunks = hs[i].split('|');
             HIGHSCORE[chunks[0]] = {
                 mode: chunks[1],
                 score: parseInt(chunks[2]),
@@ -2186,50 +2186,50 @@ function generate_highscores() {
     var tmp = [];
 
     for (var name in HIGHSCORE) {
-        var chunks = HIGHSCORE[name].mode.split(":");
+        var chunks = HIGHSCORE[name].mode.split(':');
         var dim = chunks[0];
         var s = chunks[1];
         var x = chunks[2];
-        var sfull = "";
-        if (s == "f") sfull = "flat";
-        else if (s == "b") sfull = "basic";
-        else if (s == "e") sfull = "extended";
+        var sfull = '';
+        if (s == 'f') sfull = 'flat';
+        else if (s == 'b') sfull = 'basic';
+        else if (s == 'e') sfull = 'extended';
         var row =
-            "<tr><td>" +
+            '<tr><td>' +
             name +
-            "</td><td>" +
+            '</td><td>' +
             dim +
-            "</td><td>" +
+            '</td><td>' +
             sfull +
-            "</td><td>" +
+            '</td><td>' +
             x +
-            "</td><td class="ths">" +
+            "</td><td class='ths'>" +
             pretty_number(HIGHSCORE[name].score) +
-            "</td></tr>";
+            '</td></tr>';
         tmp.push(row);
     }
     return (
-        "<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>" + tmp.join(" ") + "</table>"
+        '<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>' + tmp.join(' ') + '</table>'
     );
 }
 
 function show_highscores() {
-    $(".hud").css("display", "none");
-    $("#hscontent").html(generate_highscores());
-    $("#highscores").css("display", "block");
+    $('.hud').css('display', 'none');
+    $('#hscontent').html(generate_highscores());
+    $('#highscores').css('display', 'block');
 }
 
 /*****************************************************************************************/
 // Colum
 /*****************************************************************************************/
 function refresh_column() {
-    var xcanvas = $("#screen2");
+    var xcanvas = $('#screen2');
     var canvas = xcanvas.get(0);
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext('2d');
     var width = xcanvas.parent().width();
     var height = xcanvas.parent().height();
 
-    xcanvas.attr("width", width).attr("height", height);
+    xcanvas.attr('width', width).attr('height', height);
 
     var i, c, top, bottom, lingrad;
     var unit = width;
@@ -2238,8 +2238,8 @@ function refresh_column() {
         top = sy + i * (unit + 2);
         if (COUNTS[i] != undefined && COUNTS[i] > 0) {
             var c = COLORS[COLORS.length - 1 - i];
-            var c2 = "hsla(" + c[0] + "," + c[1] + "%," + (c[2] - 10) + "%," + c[3] + ")";
-            var c1 = "hsla(" + c[0] + "," + c[1] + "%," + (c[2] - 30) + "%," + c[3] + ")";
+            var c2 = 'hsla(' + c[0] + ',' + c[1] + '%,' + (c[2] - 10) + '%,' + c[3] + ')';
+            var c1 = 'hsla(' + c[0] + ',' + c[1] + '%,' + (c[2] - 30) + '%,' + c[3] + ')';
 
             bottom = top + unit;
             lingrad = ctx.createLinearGradient(0, top, width, bottom);
@@ -2248,7 +2248,7 @@ function refresh_column() {
             ctx.fillStyle = lingrad;
             //ctx.fillStyle = c1;
         } else {
-            ctx.fillStyle = "#050505";
+            ctx.fillStyle = '#050505';
         }
         ctx.fillRect(0, top, unit, unit);
     }
@@ -2279,10 +2279,10 @@ $(document).ready(function() {
     load_keys();
     load_score();
 
-    var xcanvas = $("#screen");
+    var xcanvas = $('#screen');
     var canvas = xcanvas.get(0);
-    var ctx = canvas.getContext("2d");
-    xcanvas.attr("width", WIDTH).attr("height", HEIGHT);
+    var ctx = canvas.getContext('2d');
+    xcanvas.attr('width', WIDTH).attr('height', HEIGHT);
 
     precompute_pieces();
     init_colors(PIT_DEPTH);
@@ -2294,13 +2294,13 @@ $(document).ready(function() {
     init_game_keys(canvas, ctx);
 
     // difficulty settings
-    $("#pieces .button").each(function() {
-        if ($(this).text().toLowerCase() == SET) $(this).addClass("on");
+    $('#pieces .button').each(function() {
+        if ($(this).text().toLowerCase() == SET) $(this).addClass('on');
     });
-    $("#pieces .button").click(function() {
+    $('#pieces .button').click(function() {
         change_set($(this).get(0));
-        $("#pieces .button").removeClass("on");
-        $(this).addClass("on");
+        $('#pieces .button').removeClass('on');
+        $(this).addClass('on');
     });
 
 
@@ -2315,55 +2315,55 @@ $(document).ready(function() {
 
 
 
-    var pit_string = PIT_WIDTH + "x" + PIT_HEIGHT + "x" + PIT_DEPTH;
-    $("#pit .button").each(function() {
-        if ($(this).text().toLowerCase() == pit_string) $(this).addClass("on");
+    var pit_string = PIT_WIDTH + 'x' + PIT_HEIGHT + 'x' + PIT_DEPTH;
+    $('#pit .button').each(function() {
+        if ($(this).text().toLowerCase() == pit_string) $(this).addClass('on');
     });
-    $("#pit .button").click(function() {
+    $('#pit .button').click(function() {
         change_pit($(this).get(0), canvas, ctx);
-        $("#pit .button").removeClass("on");
-        $(this).addClass("on");
+        $('#pit .button').removeClass('on');
+        $(this).addClass('on');
     });
 
-    $("#speed .button").each(function() {
-        if ($(this).text().toLowerCase() == SPEED) $(this).addClass("on");
+    $('#speed .button').each(function() {
+        if ($(this).text().toLowerCase() == SPEED) $(this).addClass('on');
     });
-    $("#speed .button").click(function() {
+    $('#speed .button').click(function() {
         change_speed($(this).get(0));
-        $("#speed .button").removeClass("on");
-        $(this).addClass("on");
+        $('#speed .button').removeClass('on');
+        $(this).addClass('on');
     });
 
     // custom keys
-    $("#keys .button").click(function() {
+    $('#keys .button').click(function() {
         change_keys();
     });
 
-    $("#keyset .lbl").click(function() {
+    $('#keyset .lbl').click(function() {
         new_key($(this));
     });
 
-    $("#keys_ok").click(function() {
+    $('#keys_ok').click(function() {
         LAST_KEY_EL = 0;
         accept_keys();
         save_keys();
         set_ui_start();
         STATE.setkeys = 0;
     });
-    $("#keys_cancel").click(function() {
+    $('#keys_cancel').click(function() {
         LAST_KEY_EL = 0;
         set_ui_start();
         STATE.setkeys = 0;
     });
-    $("#keys_reset").click(function() {
+    $('#keys_reset').click(function() {
         reset_keys();
     });
 
     // high scores
-    $("#hs").click(function() {
+    $('#hs').click(function() {
         show_highscores();
     });
-    $("#hs_back").click(function() {
+    $('#hs_back').click(function() {
         set_ui_start();
     });
 
@@ -2371,35 +2371,35 @@ $(document).ready(function() {
 });
 
 function showScoreUI() {
-    USERNAME = document.getElementById("username").value;
+    USERNAME = document.getElementById('username').value;
 
-    USERNAME = USERNAME ? USERNAME.toLowerCase() : "";
+    USERNAME = USERNAME ? USERNAME.toLowerCase() : '';
 
     clearTimeout(ID1);
     clearTimeout(ID2);
 
-    var hs = "Score:";
+    var hs = 'Score:';
     var dh = difhash(SET, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, SPEED);
-    if (STATE.score > 0 && (typeof HIGHSCORE[USERNAME] === "undefined" || HIGHSCORE[USERNAME].score < STATE.score)) {
+    if (STATE.score > 0 && (typeof HIGHSCORE[USERNAME] === 'undefined' || HIGHSCORE[USERNAME].score < STATE.score)) {
         HIGHSCORE[USERNAME] = {
             mode: dh,
             score: STATE.score,
         };
 
         save_score();
-        hs = "<span id="highscore">New high score:</span>";
+        hs = "<span id='highscore'>New high score:</span>";
     }
 
-    $("#scorelabel").html(hs);
-    $("#username-label").text(USERNAME);
-    $("#finalscore").text(pretty_number(STATE.score));
+    $('#scorelabel').html(hs);
+    $('#username-label').text(USERNAME);
+    $('#finalscore').text(pretty_number(STATE.score));
 
-    $("#getGamerName").css("display", "none");
-    $("#over").css("display", "block");
+    $('#getGamerName').css('display', 'none');
+    $("#over").css('display', 'block');
 
     init_game_keys(CANVAS, CTX);
 
-    USERNAME = "";
+    USERNAME = '';
 }
 
 // Local variables:
