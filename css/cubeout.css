@@ -264,7 +264,7 @@ h1 a:hover {
 
 .xb {
   color: #fff;
-  background: #0a0 url('button-green.png');
+  background: #0a0 url("button-green.png");
   box-shadow: 2px 2px 5px #000;
   -o-box-shadow: 2px 2px 5px #000;
   -icab-box-shadow: 2px 2px 5px #000;
@@ -276,10 +276,10 @@ h1 a:hover {
   -webkit-border-radius: 2px;
 }
 .red {
-  background: #a00 url('button-red.png');
+  background: #a00 url("button-red.png");
 }
 .gold {
-  background: #a50 url('button-gold.png');
+  background: #a50 url("button-gold.png");
 }
 .on {
   color: #fff;
