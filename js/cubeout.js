@@ -362,20 +362,21 @@ var KEYMAP_DEFAULT = {
     "C+": 68, // d
     "C-": 69, // e
 
-    "D": 32, // space
+    D: 32, // space
 };
 
 var LABELMAP = {
-    "left": "X-",
-    "up": "Y-",
-    "down": "Y+",
+    right: "X+",
+    left: "X-",
+    up: "Y-",
+    down: "Y+",
     "rotate X+": "A+",
     "rotate X-": "A-",
     "rotate Y+": "B+",
     "rotate Y-": "B-",
     "rotate Z+": "C+",
     "rotate Z-": "C-",
-    "drop": "D",
+    drop: "D",
 };
 
 var KEYMAP = {};
@@ -399,7 +400,7 @@ var ID1 = -1,
 
 // game state
 var STATE = {
-    "setkeys": 0
+    setkeys: 0
 };
 
 // pause
@@ -440,12 +441,12 @@ function precompute_pieces() {
             cz = Math.floor(cz);
 
             PIECES[set][i] = {
-                'lines': piece3d.lines,
-                'voxels': piece3d.voxels,
-                'cx': cx,
-                'cy': cy,
-                'cz': cz,
-                'bb': bb,
+                lines: piece3d.lines,
+                voxels: piece3d.voxels,
+                cx: cx,
+                cy: cy,
+                cz: cz,
+                bb: bb,
             };
         }
     }
@@ -466,8 +467,7 @@ function generate_layer(width, height) {
 function generate_layers(width, height, depth) {
     var layers = [];
 
-    for (var z = 0; z < depth; ++z)
-    layers.push(generate_layer(width, height));
+    for (var z = 0; z < depth; ++z) layers.push(generate_layer(width, height));
 
     return layers;
 }
@@ -543,12 +543,11 @@ function rand_range(lo, hi) {
 // Text
 /*****************************************************************************************/
 function pretty_number(x) {
-    var delimiter = "'";
+    var delimiter = """;
     var strx = x.toString();
     var pretty = "";
     for (var i = strx.length - 1; i >= 0; i--) {
-        if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0)
-        pretty = delimiter + pretty;
+        if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0) pretty = delimiter + pretty;
         pretty = strx[i] + pretty;
     }
     return pretty;
@@ -576,8 +575,8 @@ function project(cwidth, cheight, width, height, x, y, z) {
     var py = Math.round(offsety1 + y * ysize1);
 
     return {
-        'x': px,
-        'y': py
+        x: px,
+        y: py
     };
 }
 
@@ -586,7 +585,8 @@ function translate(p, t) {
 }
 
 function matmult(a, b) {
-return [a[0] * b[0] + a[1] * b[3] + a[2] * b[6],
+    return [
+        a[0] * b[0] + a[1] * b[3] + a[2] * b[6],
         a[0] * b[1] + a[1] * b[4] + a[2] * b[7],
         a[0] * b[2] + a[1] * b[5] + a[2] * b[8],
         a[3] * b[0] + a[4] * b[3] + a[5] * b[6],
@@ -599,7 +599,8 @@ return [a[0] * b[0] + a[1] * b[3] + a[2] * b[6],
 }
 
 function applymat(p, m) {
-return [m[0] * p[0] + m[1] * p[1] + m[2] * p[2],
+    return [
+        m[0] * p[0] + m[1] * p[1] + m[2] * p[2],
         m[3] * p[0] + m[4] * p[1] + m[5] * p[2],
         m[6] * p[0] + m[7] * p[1] + m[8] * p[2],
     ];
@@ -612,28 +613,19 @@ function rotate(p, rotmatrix) {
 function get_x_rotmatrix(angle) {
     var cos = Math.cos(angle);
     var sin = Math.sin(angle);
-    return [1, 0, 0,
-        0, cos, -sin,
-        0, sin, cos
-        ];
+    return [1, 0, 0, 0, cos, -sin, 0, sin, cos];
 }
 
 function get_y_rotmatrix(angle) {
     var cos = Math.cos(angle);
     var sin = Math.sin(angle);
-    return [cos, 0, sin,
-     0, 1, 0,
-    -sin, 0, cos
-    ];
+    return [cos, 0, sin, 0, 1, 0, -sin, 0, cos];
 }
 
 function get_z_rotmatrix(angle) {
     var cos = Math.cos(angle);
     var sin = Math.sin(angle);
-    return [cos, -sin, 0,
-      sin, cos, 0,
-      0, 0, 1
-      ];
+    return [cos, -sin, 0, sin, cos, 0, 0, 0, 1];
 }
 
 function get_combined_rotmatrix(angles) {
@@ -671,15 +663,14 @@ function bbox(lines) {
             else if (lines[i][1][2] > maxz) maxz = lines[i][1][2];
         }
         return {
-            'x': [minx, maxx],
-            'y': [miny, maxy],
-            'z': [minz, maxz]
+            x: [minx, maxx],
+            y: [miny, maxy],
+            z: [minz, maxz]
         };
-    } else
-      return {
-        'x': [0, 0],
-        'y': [0, 0],
-        'z': [0, 0]
+    } else return {
+        x: [0, 0],
+        y: [0, 0],
+        z: [0, 0]
     };
 }
 
@@ -702,15 +693,14 @@ function bbox_voxels(points) {
             else if (points[i][2] > maxz) maxz = points[i][2];
         }
         return {
-            'x': [minx, maxx],
-            'y': [miny, maxy],
-            'z': [minz, maxz]
+            x: [minx, maxx],
+            y: [miny, maxy],
+            z: [minz, maxz]
         };
-    } else
-       return {
-        'x': [0, 0],
-        'y': [0, 0],
-        'z': [0, 0]
+    } else return {
+        x: [0, 0],
+        y: [0, 0],
+        z: [0, 0]
     };
 }
 
@@ -739,7 +729,6 @@ function point3d(ctx, cwidth, cheight, width, height, s, color, radius) {
 
 function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
     if (CACHE_PIT == 0 || refresh_flag) {
-    
         // colors
         var color1 = "#00ff0f"; // gradient start
         var color2 = "#00ff00"; // gradient end
@@ -852,7 +841,7 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
             var cache = $("<canvas></canvas>");
             cache.css("display", "none");
             $("body").append(cache);
-            cache.attr('width', cwidth).attr('height', cheight);
+            cache.attr("width", cwidth).attr("height", cheight);
             CACHE_PIT = cache.get(0);
         }
         CACHE_PIT.getContext("2d").drawImage(canvas, 0, 0);
@@ -907,9 +896,28 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
       */
 
     var lightness = (0.3 + (0.7 * (depth - z)) / depth) * color[2];
-    var topcolor = "hsla(" + Math.floor(color[0]) + "," + Math.floor(color[1]) + "%," + Math.floor(lightness) + "%," + color[3] + ")";
-    var sidecolor = "hsla(" + Math.floor(color[0]) + "," + Math.floor(color[1]) + "%," + Math.floor(0.75 * lightness) + "%," + color[3] + ")";
-    var sidecolor2 = "hsla(" + Math.floor(color[0]) + "," + Math.floor(color[1]) + "%," + Math.floor(0.5 * lightness) + "%," + color[3] +  ")";
+    var topcolor =
+        "hsla(" + Math.floor(color[0]) + "," + Math.floor(color[1]) + "%," + Math.floor(lightness) + "%," + color[3] + ")";
+    var sidecolor =
+        "hsla(" +
+        Math.floor(color[0]) +
+        "," +
+        Math.floor(color[1]) +
+        "%," +
+        Math.floor(0.75 * lightness) +
+        "%," +
+        color[3] +
+        ")";
+    var sidecolor2 =
+        "hsla(" +
+        Math.floor(color[0]) +
+        "," +
+        Math.floor(color[1]) +
+        "%," +
+        Math.floor(0.5 * lightness) +
+        "%," +
+        color[3] +
+        ")";
 
     var render_style = CUBE_STYLE;
 
@@ -917,19 +925,15 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
 
     // right side
     if (faces[0] && x < cx) {
-    
         if (render_style == CUBE_GRADIENT) {
             var lingrad = ctx.createLinearGradient(right1, top1, right2, bottom2);
             lingrad.addColorStop(0.0, sidecolor);
             lingrad.addColorStop(1.0, sidecolor2);
             ctx.fillStyle = lingrad;
-        } else
-        ctx.fillStyle = sidecolor2;
+        } else ctx.fillStyle = sidecolor2;
 
-        if (outline)
-          ctx.strokeStyle = outline;
-        else
-          ctx.strokeStyle = sidecolor2;
+        if (outline) ctx.strokeStyle = outline;
+        else ctx.strokeStyle = sidecolor2;
         ctx.beginPath();
         ctx.moveTo(right1, top1);
         ctx.lineTo(right2, top2);
@@ -940,12 +944,10 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
     }
 
     // down side
-    if (faces[1] && (y + 1)< cy) {
+    if (faces[1] && y + 1 < cy) {
         ctx.fillStyle = sidecolor;
-        if (outline)
-          ctx.strokeStyle = outline;
-        else
-          ctx.strokeStyle = sidecolor;
+        if (outline) ctx.strokeStyle = outline;
+        else ctx.strokeStyle = sidecolor;
         ctx.beginPath();
         ctx.moveTo(left1, bottom1);
         ctx.lineTo(left2, bottom2);
@@ -958,10 +960,8 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
     // left side
     if (faces[2] && x > cx) {
         ctx.fillStyle = sidecolor2;
-        if (outline)
-          ctx.strokeStyle = outline;
-        else
-          ctx.strokeStyle = sidecolor2;
+        if (outline) ctx.strokeStyle = outline;
+        else ctx.strokeStyle = sidecolor2;
         ctx.beginPath();
         ctx.moveTo(left1, top1);
         ctx.lineTo(left2, top2);
@@ -974,10 +974,8 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
     // up side
     if (faces[3] && y > cy) {
         ctx.fillStyle = sidecolor;
-        if (outline)
-          ctx.strokeStyle = outline;
-        else
-          ctx.strokeStyle = sidecolor;
+        if (outline) ctx.strokeStyle = outline;
+        else ctx.strokeStyle = sidecolor;
         ctx.beginPath();
         ctx.moveTo(right1, top1);
         ctx.lineTo(right2, top2);
@@ -995,13 +993,10 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
             lingrad.addColorStop(0.5, sidecolor);
             lingrad.addColorStop(1.0, sidecolor2);
             ctx.fillStyle = lingrad;
-        } else
-          ctx.fillStyle = topcolor;
+        } else ctx.fillStyle = topcolor;
 
-        if (outline)
-          ctx.strokeStyle = outline;
-        else
-          ctx.strokeStyle = topcolor;
+        if (outline) ctx.strokeStyle = outline;
+        else ctx.strokeStyle = topcolor;
         ctx.fillRect(left1, top1, xsize1, ysize1);
         ctx.strokeRect(left1, top1, xsize1, ysize1);
     }
@@ -1016,7 +1011,7 @@ function render_shadow(canvas, ctx, margin, refresh_flag) {
             var cache = $("<canvas></canvas>");
             cache.css("display", "none");
             $("body").append(cache);
-            cache.attr('width', cwidth).attr('height', cheight);
+            cache.attr("width", cwidth).attr("height", cheight);
             CACHE_SHADOW = cache.get(0);
         }
 
@@ -1072,19 +1067,13 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
         row = layer[y];
         for (var x = 0; x < row.length; ++x) {
             if (row[x] != "0") {
-                if (x > 0)
-                  faces[2] = !parseInt(row[x - 1]);
-                if (x < row.length - 1)
-                  faces[0] = !parseInt(row[x + 1]);
-                if (y > 0)
-                  faces[3] = !parseInt(layer[y - 1][x]);
-                if (y < layer.length - 1)
-                faces[1] = !parseInt(layer[y + 1][x]);
+                if (x > 0) faces[2] = !parseInt(row[x - 1]);
+                if (x < row.length - 1) faces[0] = !parseInt(row[x + 1]);
+                if (y > 0) faces[3] = !parseInt(layer[y - 1][x]);
+                if (y < layer.length - 1) faces[1] = !parseInt(layer[y + 1][x]);
 
-                if (force_color)
-                  color = depth - z - 1;
-                else
-                  color = row[x] - 1;
+                if (force_color) color = depth - z - 1;
+                else color = row[x] - 1;
 
                 render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
                 faces = [1, 1, 1, 1, 0];
@@ -1098,11 +1087,8 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
         row = layer[y];
         for (var x = 0; x < row.length; ++x) {
             if (row[x] != "0") {
-            
-                if (force_color)
-                    color = depth - z - 1;
-                else
-                    color = row[x] - 1;
+                if (force_color) color = depth - z - 1;
+                else color = row[x] - 1;
                 render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
             }
         }
@@ -1116,14 +1102,13 @@ function render_layers(canvas, ctx, layers, refresh_flag) {
         //draw_pit(canvas, ctx, PIT_WIDTH,PIT_HEIGHT,PIT_DEPTH);
 
         // render bottom->top order
-        for (var i = layers.length - 1; i >= 0; --i)
-        render_layer(canvas, ctx, layers[i], i, outline, layers.length);
+        for (var i = layers.length - 1; i >= 0; --i) render_layer(canvas, ctx, layers[i], i, outline, layers.length);
 
         if (CACHE_LAYERS == 0) {
             var cache = $("<canvas></canvas>");
             cache.css("display", "none");
             $("body").append(cache);
-            cache.attr('width', canvas.width).attr('height', canvas.height);
+            cache.attr("width", canvas.width).attr("height", canvas.height);
             CACHE_LAYERS = cache.get(0);
         }
         CACHE_LAYERS.getContext("2d").drawImage(canvas, 0, 0);
@@ -1183,12 +1168,11 @@ function generate_piece(shape) {
         }
     }
 
-    for (var i in map)
-      lines.push(map[i]);
+    for (var i in map) lines.push(map[i]);
 
     return {
-        'lines': lines,
-        'voxels': voxels
+        lines: lines,
+        voxels: voxels
     };
 }
 
@@ -1219,7 +1203,6 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
         line3d(ctx, cwidth, cheight, width, height, r1, r2, c);
     }
 
-
     /*
       // Voxel test
       for(var i=0; i<piece.voxels.length; ++i) {
@@ -1228,7 +1211,6 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
           point3d(ctx, cwidth,cheight, width,height, r1, "red", 3);
       }
       */
-      
 }
 
 function render_pit(canvas, ctx) {
@@ -1250,9 +1232,9 @@ function bbox_piece(shape) {
     var height = shape[0].length;
     var depth = shape.length;
     return {
-        'width': width,
-        'height': height,
-        'depth': depth
+        width: width,
+        height: height,
+        depth: depth
     };
 }
 
@@ -1312,17 +1294,19 @@ function overlap_diff(voxels, pwidth, pheight, pdepth) {
     var bbox = bbox_voxels(voxels);
 
     // no delta if voxels are bigger than pit
-    if (!(bbox.x[0] < 0 && bbox.x[1] >= pwidth) ||
+    if (
+        !(bbox.x[0] < 0 && bbox.x[1] >= pwidth) ||
         !(bbox.y[0] < 0 && bbox.y[1] >= pheight) ||
-        !(bbox.z[0] < 0 && bbox.z[1] >= pdepth)) {
+        !(bbox.z[0] < 0 && bbox.z[1] >= pdepth)
+    ) {
         if (bbox.x[0] < 0) dx = -bbox.x[0];
-        if (bbox.x[1] > pwidth - 1) dx = (pwidth - 1) - bbox.x[1];
+        if (bbox.x[1] > pwidth - 1) dx = pwidth - 1 - bbox.x[1];
 
         if (bbox.y[0] < 0) dy = -bbox.y[0];
-        if (bbox.y[1] > pheight - 1) dy = (pheight - 1) - bbox.y[1];
+        if (bbox.y[1] > pheight - 1) dy = pheight - 1 - bbox.y[1];
 
         if (bbox.z[0] < 0) dz = -bbox.z[0];
-        if (bbox.z[1] > pdepth - 1) dz = (pdepth - 1) - bbox.z[1];
+        if (bbox.z[1] > pdepth - 1) dz = pdepth - 1 - bbox.z[1];
     }
 
     return [dx, dy, dz];
@@ -1436,24 +1420,9 @@ function test_cubes(canvas, ctx) {
 }
 
 function test_layer(canvas, ctx) {
-    var layer0 = ["11122",
-    "30012",
-    "30002",
-    "30004",
-    "00004"
-    ];
-    var layer1 = ["11122",
-    "31112",
-    "32022",
-    "31044",
-    "11144"
-    ];
-    var layer2 = ["11122",
-    "01112",
-    "32002",
-    "30044",
-    "00004"
-    ];
+    var layer0 = ["11122", "30012", "30002", "30004", "00004"];
+    var layer1 = ["11122", "31112", "32022", "31044", "11144"];
+    var layer2 = ["11122", "01112", "32002", "30044", "00004"];
     render_layer(canvas, ctx, layer1, 9, "#000");
     /*
       render_layer(canvas, ctx, layer1, 8, "#000");
@@ -1467,35 +1436,35 @@ function test_layer(canvas, ctx) {
       render_layer(canvas, ctx, layer0, 0, "#000");
       */
 
-    render_piece(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, PIECES['flat'][0], [0, 0, 0], PIECE_COLOR);
+    render_piece(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, PIECES["flat"][0], [0, 0, 0], PIECE_COLOR);
 
     //render_shadow(canvas, ctx, 100);
 }
 
 function test_cache(canvas, ctx) {
-    var start = (new Date).getTime();
+    var start = new Date().getTime();
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
-    var end = (new Date).getTime();
+    var end = new Date().getTime();
 
     log("pit uncached: " + (end - start) + "ms");
 
-    var start = (new Date).getTime();
+    var start = new Date().getTime();
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
-    var end = (new Date).getTime();
+    var end = new Date().getTime();
 
     log("pit cached: " + (end - start) + "ms");
 
     //test_cubes(canvas, ctx);
 
-    var start = (new Date).getTime();
+    var start = new Date().getTime();
     //test_layer(canvas, ctx);
     render_layers(canvas, ctx, LAYERS);
-    var end = (new Date).getTime();
+    var end = new Date().getTime();
     log("layer uncached: " + (end - start) + "ms");
 
-    var start = (new Date).getTime();
+    var start = new Date().getTime();
     render_layers(canvas, ctx, LAYERS);
-    var end = (new Date).getTime();
+    var end = new Date().getTime();
     log("layer cached: " + (end - start) + "ms");
 }
 
@@ -1543,7 +1512,12 @@ function pause(canvas, ctx) {
 
             DP = 0;
 
-            var i, n, d, r, c, h = rand_range(0, 360);
+            var i,
+                n,
+                d,
+                r,
+                c,
+                h = rand_range(0, 360);
             var bg = "hsl(" + ((h + 30) % 360) + ",90%,5%)";
             var zsort = function(a, b) {
                 return b[2] - a[2];
@@ -1567,8 +1541,8 @@ function pause(canvas, ctx) {
 
                 if (!PAUSE_WORMS) PAUSE_ELEMENTS.sort(zsort);
                 for (i = 0; i < N_ELEMENTS; ++i) {
-                
-                    if (!PAUSE_WORMS) c = "hsl(" + h + ",90%," + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + "%)";
+                    if (!PAUSE_WORMS)
+                        c = "hsl(" + h + ",90%," + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + "%)";
                     else {
                         d = 20 * PAUSE_ELEMENTS[i][n];
                         c = "hsla(" + ((h + d).toFixed(0) % 360) + ",90%,50%,0.5)";
@@ -1585,7 +1559,13 @@ function pause(canvas, ctx) {
                         PAUSE_ELEMENTS[i][0] += 0.005 * Math.sin(DP);
                         PAUSE_ELEMENTS[i][1] += 0.005 * Math.cos(DP);
                     }
-                    if (PAUSE_ELEMENTS[i][2] < -5 || PAUSE_ELEMENTS[i][0] < -10 || PAUSE_ELEMENTS[i][1] < -10 || PAUSE_ELEMENTS[i][0] > PIT_WIDTH + 10 || PAUSE_ELEMENTS[i][1] > PIT_HEIGHT + 10 ) {
+                    if (
+                        PAUSE_ELEMENTS[i][2] < -5 ||
+                        PAUSE_ELEMENTS[i][0] < -10 ||
+                        PAUSE_ELEMENTS[i][1] < -10 ||
+                        PAUSE_ELEMENTS[i][0] > PIT_WIDTH + 10 ||
+                        PAUSE_ELEMENTS[i][1] > PIT_HEIGHT + 10
+                    ) {
                         PAUSE_ELEMENTS[i][2] = PIT_DEPTH;
                         PAUSE_ELEMENTS[i][0] = rand_range(0, 100 * PIT_WIDTH - 1) / 100;
                         PAUSE_ELEMENTS[i][1] = rand_range(0, 100 * PIT_HEIGHT - 1) / 100;
@@ -1600,7 +1580,6 @@ function pause(canvas, ctx) {
 
         // simple static random cubes
         else {
-        
             var tmp = generate_layers(PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
             init_layers(tmp, 4);
             FORCE_DEPTH_COLOR = 0;
@@ -1641,10 +1620,8 @@ function init_game_keys(canvas, ctx) {
 
 function end_game(canvas, ctx) {
     $(document).unbind("keydown");
-    
     set_ui_gameover();
     CANVAS = canvas;
-    
     CTX = ctx;
 }
 
@@ -1665,18 +1642,9 @@ function handle_key(e, canvas, ctx) {
     var da = [0, 0, 0];
     var rot;
 
-    var rotx = [1, 0, 0,
-    0, 0, -1,
-    0, 1, 0
-    ];
-    var roty = [0, 0, 1,
-    0, 1, 0,
-    -1, 0, 0
-    ];
-    var rotz = [0, -1, 0,
-    1, 0, 0,
-    0, 0, 1
-    ];
+    var rotx = [1, 0, 0, 0, 0, -1, 0, 1, 0];
+    var roty = [0, 0, 1, 0, 1, 0, -1, 0, 0];
+    var rotz = [0, -1, 0, 1, 0, 0, 0, 0, 1];
 
     var invert = function(m) {
         var r = new Array(9);
@@ -1824,7 +1792,7 @@ function play_game(canvas, ctx, start_handler) {
     STATE.refresh_layers_flag = 0;
     STATE.render_shadow_flag = 0;
 
-    START = (new Date).getTime();
+    START = new Date().getTime();
     ID1 = setInterval(function() {
         game_loop(canvas, ctx);
     }, FRAME_DELAY);
@@ -1841,10 +1809,10 @@ function play_game(canvas, ctx, start_handler) {
 // fps counter globals
 var COUNTER = 0;
 var EC = 0;
-SC = 0, XC = 0;
+(SC = 0), (XC = 0);
 
 function game_loop(canvas, ctx) {
-    END = (new Date).getTime();
+    END = new Date().getTime();
     ELAPSED = END - START;
     START = END;
 
@@ -1881,9 +1849,10 @@ function game_loop(canvas, ctx) {
         STATE.current_matrix = STATE.new_matrix;
         STATE.new_angles = [0, 0, 0];
     } else {
-        var angles = [STATE.progress * STATE.new_angles[0],
+        var angles = [
+            STATE.progress * STATE.new_angles[0],
             STATE.progress * STATE.new_angles[1],
-            STATE.progress * STATE.new_angles[2]
+            STATE.progress * STATE.new_angles[2],
         ];
         STATE.current_matrix = matmult(get_combined_rotmatrix(angles), STATE.start_matrix);
     }
@@ -1899,7 +1868,19 @@ function render_frame(canvas, ctx) {
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
     render_layers(canvas, ctx, LAYERS, STATE.refresh_layers_flag);
     if (STATE.render_piece_flag)
-        render_piece(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, STATE.current_x, STATE.current_y, STATE.current_z, STATE.piece, STATE.current_matrix, PIECE_COLOR);
+        render_piece(
+            canvas,
+            ctx,
+            PIT_WIDTH,
+            PIT_HEIGHT,
+            PIT_DEPTH,
+            STATE.current_x,
+            STATE.current_y,
+            STATE.current_z,
+            STATE.piece,
+            STATE.current_matrix,
+            PIECE_COLOR
+        );
     //if(STATE.render_shadow_flag)
     //    render_shadow(canvas, ctx, 100);
 }
@@ -1910,27 +1891,18 @@ function reset(canvas, ctx) {
     STATE.current_x = 0;
     STATE.current_y = 0;
     STATE.current_z = 0;
-    STATE.current_matrix = [1, 0, 0,
-      0, 1, 0,
-      0, 0, 1
-      ];
+    STATE.current_matrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
 
     STATE.new_x = 0;
     STATE.new_y = 0;
     STATE.new_z = 0;
-    STATE.new_matrix = [1, 0, 0,
-      0, 1, 0,
-      0, 0, 1
-    ];
+    STATE.new_matrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
     STATE.new_angles = [0, 0, 0];
 
     STATE.start_x = 0;
     STATE.start_y = 0;
     STATE.start_z = 0;
-    STATE.start_matrix = [1, 0, 0,
-      0, 1, 0,
-      0, 0, 1
-    ];
+    STATE.start_matrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
 
     STATE.progress = 0;
 
@@ -2028,9 +2000,14 @@ function reset_allowed() {
     ALLOWED = [];
     for (var i = 0; i < PIECES[SET].length; ++i) {
         var bb = PIECES[SET][i].bb;
-        if (bb.x[0] >= 0 &&  bb.x[1] <= PIT_WIDTH &&
-            bb.y[0] >= 0 && bb.y[1] <= PIT_HEIGHT &&
-            bb.z[0] >= 0 && bb.z[1] <= PIT_DEPTH)
+        if (
+            bb.x[0] >= 0 &&
+            bb.x[1] <= PIT_WIDTH &&
+            bb.y[0] >= 0 &&
+            bb.y[1] <= PIT_HEIGHT &&
+            bb.z[0] >= 0 &&
+            bb.z[1] <= PIT_DEPTH
+        )
             ALLOWED.push(i);
     }
 }
@@ -2073,13 +2050,13 @@ function refresh_score() {
 /*****************************************************************************************/
 function save_settings() {
     var tmp = SET + ":" + PIT_WIDTH + ":" + PIT_HEIGHT + ":" + PIT_DEPTH + ":" + SPEED;
-    $.cookie('co_settings', tmp, {
+    $.cookie("co_settings", tmp, {
         expires: 10000
     });
 }
 
 function load_settings() {
-    var tmp = $.cookie('co_settings');
+    var tmp = $.cookie("co_settings");
     if (tmp) {
         var chunks = tmp.split(":");
         var set = chunks[0];
@@ -2128,8 +2105,7 @@ function new_key(el) {
 }
 
 function copy_keymap(src, dst) {
-    for (var i in src)
-    dst[i] = src[i];
+    for (var i in src) dst[i] = src[i];
 }
 
 function accept_keys() {
@@ -2144,13 +2120,13 @@ function reset_keys() {
 function save_keys() {
     var tmp = [];
     for (var i in KEYMAP) tmp.push(i + ":" + KEYMAP[i]);
-    $.cookie('co_keymap', tmp.join("|"), {
+    $.cookie("co_keymap", tmp.join("|"), {
         expires: 10000
     });
 }
 
 function load_keys() {
-    var tmp = $.cookie('co_keymap');
+    var tmp = $.cookie("co_keymap");
     if (tmp) {
         KEYMAP = {};
         var key = tmp.split("|");
@@ -2183,20 +2159,25 @@ function difhash(set, width, height, depth, speed) {
 
 function save_score() {
     var tmp = [];
-    for (var name in HIGHSCORE) {tmp.push(name + "|" + HIGHSCORE[name].mode + "|" + HIGHSCORE[name].score);}
-    $.cookie('co_highscore', tmp.join(","), {
+    for (var name in HIGHSCORE) {
+        tmp.push(name + "|" + HIGHSCORE[name].mode + "|" + HIGHSCORE[name].score);
+    }
+    $.cookie("co_highscore", tmp.join(","), {
         expires: 10000
     });
 }
 
 function load_score() {
-    var tmp = $.cookie('co_highscore');
+    var tmp = $.cookie("co_highscore");
     if (tmp) {
         HIGHSCORE = {};
         var hs = tmp.split(",");
         for (var i = 0; i < hs.length; ++i) {
             var chunks = hs[i].split("|");
-            HIGHSCORE[chunks[0]] = {mode: chunks[1], score: parseInt(chunks[2])};
+            HIGHSCORE[chunks[0]] = {
+                mode: chunks[1],
+                score: parseInt(chunks[2]),
+            };
         }
     }
 }
@@ -2213,10 +2194,23 @@ function generate_highscores() {
         if (s == "f") sfull = "flat";
         else if (s == "b") sfull = "basic";
         else if (s == "e") sfull = "extended";
-        var row = "<tr><td>" + name + "</td><td>" + dim + "</td><td>" + sfull + "</td><td>" + x + "</td><td class='ths'>" + pretty_number(HIGHSCORE[name].score) + "</td></tr>";
+        var row =
+            "<tr><td>" +
+            name +
+            "</td><td>" +
+            dim +
+            "</td><td>" +
+            sfull +
+            "</td><td>" +
+            x +
+            "</td><td class="ths">" +
+            pretty_number(HIGHSCORE[name].score) +
+            "</td></tr>";
         tmp.push(row);
     }
-    return ( "<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>" + tmp.join(" ") + "</table>" );
+    return (
+        "<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>" + tmp.join(" ") + "</table>"
+    );
 }
 
 function show_highscores() {
@@ -2235,7 +2229,7 @@ function refresh_column() {
     var width = xcanvas.parent().width();
     var height = xcanvas.parent().height();
 
-    xcanvas.attr('width', width).attr('height', height);
+    xcanvas.attr("width", width).attr("height", height);
 
     var i, c, top, bottom, lingrad;
     var unit = width;
@@ -2288,7 +2282,7 @@ $(document).ready(function() {
     var xcanvas = $("#screen");
     var canvas = xcanvas.get(0);
     var ctx = canvas.getContext("2d");
-    xcanvas.attr('width', WIDTH).attr('height', HEIGHT);
+    xcanvas.attr("width", WIDTH).attr("height", HEIGHT);
 
     precompute_pieces();
     init_colors(PIT_DEPTH);
@@ -2411,3 +2405,4 @@ function showScoreUI() {
 // Local variables:
 // indent-tabs-mode: nil
 // End:
+
