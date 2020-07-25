@@ -10,7 +10,7 @@ span#speed {
     left: -630px;
     width: 50px !important;
     height: 458px;
-    border: 3px solid #0000AA;
+    border: 2px solid #0000AA;
 }
 div#pst_rlt_cs {
     position: relative;
@@ -38,7 +38,7 @@ div#difficulty {
     position: absolute;
     top: 22%;
     right: -22%;
-    border: 3px solid #0000AA;
+    border: 2px solid #0000AA;
     width: 150px;
     height: 400px;
 }
@@ -56,7 +56,7 @@ div#difficulty span.button.on {
     font-size: 20px;
 }
 span#pieces {
-    border: 3px solid #0000AA;
+    border: 2px solid #0000AA;
     box-sizing: border-box;
     margin-left: 3px;
     margin-top: 3px;
@@ -83,7 +83,7 @@ div#score {
 	right: -18.5%;
 	font-size: 30px;
 	width: 116px;
-	border: 3px solid #0000AA;
+	border: 2px solid #0000AA; 
 	font-family: sans-serif;
 	color: #00AA00;
 	padding-right: 2px;
