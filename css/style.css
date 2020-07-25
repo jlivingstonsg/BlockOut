@@ -25,6 +25,7 @@ span#speed span.button {
     color: #89572F !important;
     font-weight: bolder;
     padding: 0;
+    margin-top: -7px;
 }
 
 span#speed span.button.on {
@@ -83,7 +84,7 @@ div#score {
 	right: -18.5%;
 	font-size: 30px;
 	width: 116px;
-	border: 2px solid #0000AA; 
+	border: 2px solid #0000AA;
 	font-family: sans-serif;
 	color: #00AA00;
 	padding-right: 2px;
@@ -180,4 +181,20 @@ span#rotSpeed span.button {
 span#keys span.button {
     font-size: 15px;
     padding: 3px 0;
+}
+div#column {
+    position: absolute;
+    left: -36px;
+    height: 186px;
+    border: 2px solid #00AA00;
+    bottom: 96.3%;
+    border-top: 0;
+    border-bottom: 4px solid #00AA00;
+}
+
+canvas#screen2 {
+    padding: 3px;
+    margin-left: -3.5px;
+    width: 16.5px;
+    margin-top: -20px;
 }
