@@ -244,7 +244,7 @@ h1 a:hover {
   width: 15px;
   height: 500px;
   position: relative;
-  top: -575px;
+  /*top: -575px;*/
   left: -275px;
   margin-bottom: -500px;
 }
