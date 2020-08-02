@@ -44,7 +44,6 @@ var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
 
-
 var SLOW_ANIM_DURATION = 150;
 var MED_ANIM_DURATION = 70;
 var FAST_ANIM_DURATION = 10;
@@ -62,6 +61,7 @@ var SET = 'basic';
 
 // piece shapes
 var TEMPLATES = {
+
   // 2D polyominoes
   flat: [
     [['x']],
@@ -399,7 +399,8 @@ function generate_layer(width, height) {
 function generate_layers(width, height, depth) {
   var layers = [];
 
-  for (var z = 0; z < depth; ++z) layers.push(generate_layer(width, height));
+  for (var z = 0; z < depth; ++z)
+  layers.push(generate_layer(width, height));
 
   return layers;
 }
@@ -479,7 +480,8 @@ function pretty_number(x) {
   var strx = x.toString();
   var pretty = '';
   for (var i = strx.length - 1; i >= 0; i--) {
-    if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0) pretty = delimiter + pretty;
+    if ((strx.length - 1 - i) % 3 == 0 && (strx.length - 1 - i) > 0)
+    pretty = delimiter + pretty;
     pretty = strx[i] + pretty;
   }
   return pretty;
@@ -542,19 +544,31 @@ function rotate(p, rotmatrix) {
 function get_x_rotmatrix(angle) {
   var cos = Math.cos(angle);
   var sin = Math.sin(angle);
-  return [1, 0, 0, 0, cos, -sin, 0, sin, cos];
+  return [
+     1, 0, 0,
+     0, cos, -sin,
+     0, sin, cos
+  ];
 }
 
 function get_y_rotmatrix(angle) {
   var cos = Math.cos(angle);
   var sin = Math.sin(angle);
-  return [cos, 0, sin, 0, 1, 0, -sin, 0, cos];
+  return [
+     cos, 0, sin,
+     0, 1, 0,
+     -sin, 0, cos
+  ];
 }
 
 function get_z_rotmatrix(angle) {
   var cos = Math.cos(angle);
   var sin = Math.sin(angle);
-  return [cos, -sin, 0, sin, cos, 0, 0, 0, 1];
+  return [
+     cos, -sin, 0,
+     sin, cos, 0,
+     0, 0, 1
+  ];
 }
 
 function get_combined_rotmatrix(angles) {
@@ -592,7 +606,8 @@ function bbox(lines) {
       else if (lines[i][1][2] > maxz) maxz = lines[i][1][2];
     }
     return { x: [minx, maxx], y: [miny, maxy], z: [minz, maxz] };
-  } else return { x: [0, 0], y: [0, 0], z: [0, 0] };
+  } else
+  return { x: [0, 0], y: [0, 0], z: [0, 0] };
 }
 
 function bbox_voxels(points) {
@@ -614,7 +629,8 @@ function bbox_voxels(points) {
       else if (points[i][2] > maxz) maxz = points[i][2];
     }
     return { x: [minx, maxx], y: [miny, maxy], z: [minz, maxz] };
-  } else return { x: [0, 0], y: [0, 0], z: [0, 0] };
+  } else
+  return { x: [0, 0], y: [0, 0], z: [0, 0] };
 }
 
 /*****************************************************************************************/
@@ -642,6 +658,7 @@ function point3d(ctx, cwidth, cheight, width, height, s, color, radius) {
 
 function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
   if (CACHE_PIT == 0 || refresh_flag) {
+  
     // colors
     var color1 = '#00ff0f'; // gradient start
     var color2 = '#00ff00'; // gradient end
@@ -771,6 +788,7 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
   /*
     var offsetx1 = z*(ZSIZE_X-z);
     var offsety1 = z*(ZSIZE_Y-z);
+    
     var offsetx2 = (z+1)*(ZSIZE_X-(z+1));
     var offsety2 = (z+1)*(ZSIZE_Y-(z+1));
     */
@@ -809,26 +827,13 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
 
   var lightness = (0.3 + (0.7 * (depth - z)) / depth) * color[2];
   var topcolor =
-    'hsla(' + Math.floor(color[0]) + ',' + Math.floor(color[1]) + '%,' + Math.floor(lightness) + '%,' + color[3] + ')';
+    'hsla(' + Math.floor(color[0]) + ',' + Math.floor(color[1]) + '%,' +
+    Math.floor(lightness) + '%,' + color[3] + ')';
   var sidecolor =
-    'hsla(' +
-    Math.floor(color[0]) +
-    ',' +
-    Math.floor(color[1]) +
-    '%,' +
-    Math.floor(0.75 * lightness) +
-    '%,' +
-    color[3] +
-    ')';
-  var sidecolor2 =
-    'hsla(' +
-    Math.floor(color[0]) +
-    ',' +
-    Math.floor(color[1]) +
-    '%,' +
-    Math.floor(0.5 * lightness) +
-    '%,' +
-    color[3] +
+    'hsla(' + Math.floor(color[0]) + ',' + Math.floor(color[1]) +    '%,' +
+    Math.floor(0.75 * lightness) +  '%,' + color[3] + ')';
+  var sidecolor2 = 'hsla(' + Math.floor(color[0]) + ',' + Math.floor(color[1]) + '%,' +
+    Math.floor(0.5 * lightness) + '%,' + color[3] +
     ')';
 
   var render_style = CUBE_STYLE;
@@ -837,15 +842,19 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
 
   // right side
   if (faces[0] && x < cx) {
+  
     if (render_style == CUBE_GRADIENT) {
       var lingrad = ctx.createLinearGradient(right1, top1, right2, bottom2);
       lingrad.addColorStop(0.0, sidecolor);
       lingrad.addColorStop(1.0, sidecolor2);
       ctx.fillStyle = lingrad;
-    } else ctx.fillStyle = sidecolor2;
+    } else
+         ctx.fillStyle = sidecolor2;
 
-    if (outline) ctx.strokeStyle = outline;
-    else ctx.strokeStyle = sidecolor2;
+    if (outline)
+       ctx.strokeStyle = outline;
+    else
+       ctx.strokeStyle = sidecolor2;
     ctx.beginPath();
     ctx.moveTo(right1, top1);
     ctx.lineTo(right2, top2);
@@ -858,8 +867,10 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
   // down side
   if (faces[1] && y + 1 < cy) {
     ctx.fillStyle = sidecolor;
-    if (outline) ctx.strokeStyle = outline;
-    else ctx.strokeStyle = sidecolor;
+    if (outline)
+        ctx.strokeStyle = outline;
+    else
+        ctx.strokeStyle = sidecolor;
     ctx.beginPath();
     ctx.moveTo(left1, bottom1);
     ctx.lineTo(left2, bottom2);
@@ -872,8 +883,10 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
   // left side
   if (faces[2] && x > cx) {
     ctx.fillStyle = sidecolor2;
-    if (outline) ctx.strokeStyle = outline;
-    else ctx.strokeStyle = sidecolor2;
+    if (outline)
+       ctx.strokeStyle = outline;
+    else
+       ctx.strokeStyle = sidecolor2;
     ctx.beginPath();
     ctx.moveTo(left1, top1);
     ctx.lineTo(left2, top2);
@@ -886,8 +899,10 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
   // up side
   if (faces[3] && y > cy) {
     ctx.fillStyle = sidecolor;
-    if (outline) ctx.strokeStyle = outline;
-    else ctx.strokeStyle = sidecolor;
+    if (outline)
+       ctx.strokeStyle = outline;
+    else
+       ctx.strokeStyle = sidecolor;
     ctx.beginPath();
     ctx.moveTo(right1, top1);
     ctx.lineTo(right2, top2);
@@ -905,10 +920,13 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
       lingrad.addColorStop(0.5, sidecolor);
       lingrad.addColorStop(1.0, sidecolor2);
       ctx.fillStyle = lingrad;
-    } else ctx.fillStyle = topcolor;
+    } else
+       ctx.fillStyle = topcolor;
 
-    if (outline) ctx.strokeStyle = outline;
-    else ctx.strokeStyle = topcolor;
+    if (outline)
+       ctx.strokeStyle = outline;
+    else
+       ctx.strokeStyle = topcolor;
     ctx.fillRect(left1, top1, xsize1, ysize1);
     ctx.strokeRect(left1, top1, xsize1, ysize1);
   }
@@ -979,13 +997,19 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
     row = layer[y];
     for (var x = 0; x < row.length; ++x) {
       if (row[x] != '0') {
-        if (x > 0) faces[2] = !parseInt(row[x - 1]);
-        if (x < row.length - 1) faces[0] = !parseInt(row[x + 1]);
-        if (y > 0) faces[3] = !parseInt(layer[y - 1][x]);
-        if (y < layer.length - 1) faces[1] = !parseInt(layer[y + 1][x]);
+        if (x > 0)
+        faces[2] = !parseInt(row[x - 1]);
+        if (x < row.length - 1)
+        faces[0] = !parseInt(row[x + 1]);
+        if (y > 0)
+        faces[3] = !parseInt(layer[y - 1][x]);
+        if (y < layer.length - 1)
+        faces[1] = !parseInt(layer[y + 1][x]);
 
-        if (force_color) color = depth - z - 1;
-        else color = row[x] - 1;
+        if (force_color)
+           color = depth - z - 1;
+        else        
+           color = row[x] - 1;
 
         render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
         faces = [1, 1, 1, 1, 0];
@@ -999,8 +1023,10 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
     row = layer[y];
     for (var x = 0; x < row.length; ++x) {
       if (row[x] != '0') {
-        if (force_color) color = depth - z - 1;
-        else color = row[x] - 1;
+        if (force_color)
+           color = depth - z - 1;
+        else
+           color = row[x] - 1;
         render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
       }
     }
@@ -1014,7 +1040,8 @@ function render_layers(canvas, ctx, layers, refresh_flag) {
     //draw_pit(canvas, ctx, PIT_WIDTH,PIT_HEIGHT,PIT_DEPTH);
 
     // render bottom->top order
-    for (var i = layers.length - 1; i >= 0; --i) render_layer(canvas, ctx, layers[i], i, outline, layers.length);
+    for (var i = layers.length - 1; i >= 0; --i)
+    render_layer(canvas, ctx, layers[i], i, outline, layers.length);
 
     if (CACHE_LAYERS == 0) {
       var cache = $('<canvas></canvas>');
@@ -1080,7 +1107,8 @@ function generate_piece(shape) {
     }
   }
 
-  for (var i in map) lines.push(map[i]);
+  for (var i in map)
+  lines.push(map[i]);
 
   return { lines: lines, voxels: voxels };
 }
@@ -1112,6 +1140,7 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
     line3d(ctx, cwidth, cheight, width, height, r1, r2, c);
   }
 
+
   /*
     // Voxel test
     for(var i=0; i<piece.voxels.length; ++i) {
@@ -1120,6 +1149,7 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
         point3d(ctx, cwidth,cheight, width,height, r1, "red", 3);
     }
     */
+    
 }
 
 function render_pit(canvas, ctx) {
@@ -1127,8 +1157,8 @@ function render_pit(canvas, ctx) {
   render_layers(canvas, ctx, LAYERS, 1);
 
   // transparent overlay layer below shadow
-  ctx.fillStyle = 'rgba(25,25,25,0.75)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(25,25,25,0.75)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   render_shadow(canvas, ctx, 100, 0, 1);
 }
@@ -1205,13 +1235,13 @@ function overlap_diff(voxels, pwidth, pheight, pdepth) {
     !(bbox.z[0] < 0 && bbox.z[1] >= pdepth)
   ) {
     if (bbox.x[0] < 0) dx = -bbox.x[0];
-    if (bbox.x[1] > pwidth - 1) dx = pwidth - 1 - bbox.x[1];
+        if (bbox.x[1] > pwidth - 1) dx = pwidth - 1 - bbox.x[1];
 
     if (bbox.y[0] < 0) dy = -bbox.y[0];
-    if (bbox.y[1] > pheight - 1) dy = pheight - 1 - bbox.y[1];
+        if (bbox.y[1] > pheight - 1) dy = pheight - 1 - bbox.y[1];
 
     if (bbox.z[0] < 0) dz = -bbox.z[0];
-    if (bbox.z[1] > pdepth - 1) dz = pdepth - 1 - bbox.z[1];
+        if (bbox.z[1] > pdepth - 1) dz = pdepth - 1 - bbox.z[1];
   }
 
   return [dx, dy, dz];
@@ -1240,18 +1270,18 @@ function dump_layers(layers) {
   var height = layers[0].length;
   var width = layers[0][0].length;
 
-  var tmp = '';
+    var tmp = '';
   for (var z = 0; z < depth; ++z) {
     for (var y = 0; y < height; ++y) {
       for (var x = 0; x < width; ++x) {
         tmp += layers[z][y][x];
       }
-      tmp += '<br/>';
+            tmp += '<br/>';
     }
-    tmp += z + '<br/>';
+        tmp += z + '<br/>';
   }
 
-  $('#layers').html(tmp);
+     $('#layers').html(tmp);
 }
 
 function remove_layer(layers, n) {
@@ -1299,7 +1329,7 @@ function log(text) {
 /*****************************************************************************************/
 function test_cubes(canvas, ctx) {
   var faces = [1, 1, 1, 1, 1];
-  var outline = '#000';
+    var outline = '#000';
 
   render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 0, 0, 0, [0, 100, 50, 1.0], faces, outline);
   render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, 4, 0, 0, [60, 100, 50, 1.0], faces, outline);
@@ -1325,10 +1355,10 @@ function test_cubes(canvas, ctx) {
 }
 
 function test_layer(canvas, ctx) {
-  var layer0 = ['11122', '30012', '30002', '30004', '00004'];
-  var layer1 = ['11122', '31112', '32022', '31044', '11144'];
-  var layer2 = ['11122', '01112', '32002', '30044', '00004'];
-  render_layer(canvas, ctx, layer1, 9, '#000');
+    var layer0 = ['11122', '30012', '30002', '30004', '00004'];
+    var layer1 = ['11122', '31112', '32022', '31044', '11144'];
+    var layer2 = ['11122', '01112', '32002', '30044', '00004'];
+    render_layer(canvas, ctx, layer1, 9, '#000');
   /*
     render_layer(canvas, ctx, layer1, 8, "#000");
     render_layer(canvas, ctx, layer1, 7, "#000");
@@ -1394,19 +1424,19 @@ function pause(canvas, ctx) {
     draw_pit(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH);
     render_layers(canvas, ctx, LAYERS, 1);
 
-    ID1 = setInterval(function () {
-      game_loop(canvas, ctx);
+        ID1 = setInterval(function () {
+        game_loop(canvas, ctx);
     }, FRAME_DELAY);
     if (AUTOFALL_DELAY)
-      ID2 = setInterval(function () {
+            ID2 = setInterval(function () {
         autofall(canvas, ctx);
       }, AUTOFALL_DELAY);
     STATE.paused = 0;
     STATE.pause_ended_flag = 1;
 
-    $('#score').css('display', 'block');
-    $('#column').css('display', 'block');
-    $('#pause').css('display', 'none');
+        $('#score').css('display', 'block');
+        $('#column').css('display', 'block');
+        $('#pause').css('display', 'none');
   } else {
     clearTimeout(ID1);
     clearTimeout(ID2);
@@ -1417,25 +1447,18 @@ function pause(canvas, ctx) {
 
       DP = 0;
 
-      var i,
-        n,
-        d,
-        r,
-        c,
-        h = rand_range(0, 360);
-      var bg = 'hsl(' + ((h + 30) % 360) + ',90%,5%)';
-      var zsort = function (a, b) {
-        return b[2] - a[2];
-      };
-      var cwidth = canvas.width;
-      var cheight = canvas.height;
+      var i,    n,    d,   r,   c,   h = rand_range(0, 360);
+            var bg = 'hsl(' + ((h + 30) % 360) + ',90%,5%)';
+            var zsort = function (a, b) { return b[2] - a[2]; };
+         var cwidth = canvas.width;
+         var cheight = canvas.height;
 
       PAUSE_WORMS = rand_range(0, 1);
 
       if (PAUSE_WORMS) {
-        c = 'hsla(' + h + ',90%,50%,0.5)';
-        bg = 'rgba(0,0,0,0.07)';
-        ctx.fillStyle = '#000';
+                c = 'hsla(' + h + ',90%,50%,0.5)';
+                bg = 'rgba(0,0,0,0.07)';
+                ctx.fillStyle = '#000';
         ctx.fillRect(0, 0, WIDTH, HEIGHT);
         n = rand_range(0, 1);
       }
@@ -1446,14 +1469,14 @@ function pause(canvas, ctx) {
 
         if (!PAUSE_WORMS) PAUSE_ELEMENTS.sort(zsort);
         for (i = 0; i < N_ELEMENTS; ++i) {
-          if (!PAUSE_WORMS)
-            c = 'hsl(' + h + ',90%,' + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + '%)';
+           if (!PAUSE_WORMS)
+                      c = 'hsl(' + h + ',90%,' + ((40 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH).toFixed(0) + '%)';
           else {
             d = 20 * PAUSE_ELEMENTS[i][n];
-            c = 'hsla(' + ((h + d).toFixed(0) % 360) + ',90%,50%,0.5)';
+                        c = 'hsla(' + ((h + d).toFixed(0) % 360) + ',90%,50%,0.5)';
           }
 
-          r = cap((10 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH, 10);
+                    r = cap((10 * (PIT_DEPTH - PAUSE_ELEMENTS[i][2])) / PIT_DEPTH, 10);
           point3d(ctx, cwidth, cheight, PIT_WIDTH, PIT_HEIGHT, PAUSE_ELEMENTS[i], c, r);
 
           PAUSE_ELEMENTS[i][2] -= PAUSE_ELEMENTS[i][3];
@@ -1697,14 +1720,10 @@ function play_game(canvas, ctx, start_handler) {
   STATE.refresh_layers_flag = 0;
   STATE.render_shadow_flag = 0;
 
-  START = new Date().getTime();
-  ID1 = setInterval(function () {
-    game_loop(canvas, ctx);
-  }, FRAME_DELAY);
+    START = new Date().getTime();
+    ID1 = setInterval(function () { game_loop(canvas, ctx);}, FRAME_DELAY);
   if (AUTOFALL_DELAY)
-    ID2 = setInterval(function () {
-      autofall(canvas, ctx);
-    }, AUTOFALL_DELAY);
+      ID2 = setInterval(function () {  autofall(canvas, ctx);  }, AUTOFALL_DELAY);
 
   $(document).keydown(function (e) {
     handle_key(e, canvas, ctx);
@@ -1717,7 +1736,7 @@ var EC = 0;
 (SC = 0), (XC = 0);
 
 function game_loop(canvas, ctx) {
-  END = new Date().getTime();
+    END = new Date().getTime();
   ELAPSED = END - START;
   START = END;
 
@@ -2076,14 +2095,13 @@ function load_score() {
       HIGHSCORE[chunks[0]] = {
         mode: chunks[1],
         score: parseInt(chunks[2]),
-      };
+       };
     }
   }
 }
 
 function generate_highscores() {
   var tmp = [];
-
   for (var name in HIGHSCORE) {
     var chunks = HIGHSCORE[name].mode.split(':');
     var dim = chunks[0];
@@ -2108,7 +2126,8 @@ function generate_highscores() {
     tmp.push(row);
   }
   return (
-    '<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>' + tmp.join(' ') + '</table>'
+    '<table><tr><th>Name</th><th>Pit</th><th>Pieces</th><th>Speed</th><th>Score</th></tr>' +
+    tmp.join(' ') + '</table>'
   );
 }
 
