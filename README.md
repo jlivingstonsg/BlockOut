@@ -13,6 +13,10 @@ I will try to make it look and work, as the original BlockOut from 1989.  <br>
 
 =======  <br>
 Play  jlivingstonsg      game here: [CubeOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
-Play  woshik             game here: [CubeOut](https://woshik.github.io/cube-game/)       <br>
-Play  sami-23            game here: [CubeOut](https://sami-23.github.io/BlockOut/) <br>
-Play  bhargavgohil       game here: [CubeOut](https://bhargavgohil.github.io/)
+<br>
+<br>
+<br>
+_______________________________________________________________
+  woshik             game here: [CubeOut](https://woshik.github.io/cube-game/)       <br>
+  sami-23            game here: [CubeOut](https://sami-23.github.io/BlockOut/) <br>
+  bhargavgohil       game here: [CubeOut](https://bhargavgohil.github.io/)
