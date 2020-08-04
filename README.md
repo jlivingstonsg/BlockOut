@@ -17,6 +17,6 @@ Play  jlivingstonsg      game here: [CubeOut](https://jlivingstonsg.github.io/Bl
 <br>
 <br>
 _______________________________________________________________
-  woshik             game here: [CubeOut](https://woshik.github.io/cube-game/)       <br>
-  sami-23            game here: [CubeOut](https://sami-23.github.io/BlockOut/) <br>
-  bhargavgohil       game here: [CubeOut](https://bhargavgohil.github.io/)
+  woshik            [CubeOut](https://woshik.github.io/cube-game/)       <br>
+  sami-23           [CubeOut](https://sami-23.github.io/BlockOut/) <br>
+  bhargavgohil      [CubeOut](https://bhargavgohil.github.io/)    <br>
