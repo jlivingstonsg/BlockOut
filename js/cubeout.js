@@ -40,6 +40,9 @@ var SPEED_MAP = {
   3: 500,
   4: 250,
 };
+
+var NR_BLOCKS = 0;
+
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
@@ -1759,7 +1762,7 @@ function game_loop(canvas, ctx) {
   STATE.progress = cap(STATE.progress + ELAPSED / ANIM_DURATION, 1);
 
   if (STATE.touchdown_flag && STATE.progress >= 1) {
-    touchdown();
+    touchdown(canvas, ctx);
     if (STATE.new_z == 0) game_over(canvas, ctx);
     else new_piece(canvas, ctx);
   }
@@ -1851,7 +1854,7 @@ function set_start(keep_angles) {
   STATE.progress = 0;
 }
 
-function touchdown() {
+function touchdown(canvas, ctx) {
   STATE.render_piece_flag = 0;
   STATE.refresh_layers_flag = 1;
 
@@ -1859,6 +1862,21 @@ function touchdown() {
   STATE.score += add_voxels(nvoxels, LAYERS, COUNTS);
 
   STATE.score += check_full_layers(LAYERS, COUNTS);
+  
+  NR_BLOCKS++;
+  IF (NR_BLOCKS % 50==0 && SPEED<=3){
+    SPEED++;
+    $('#speed .button').removeClass('on');
+    $('#speed .button:eq('+SPEED+')').addClass('on');
+    
+    AUTOFALL_DELAY = SPEED_MAP[SPEED];
+    save_settings();
+    
+    ID2 = setInterval(function () { autofall(canvas, ctx); }, AUTOFALL_DELAY);
+    //alert("Change Speed");
+  }
+  //console.log("AUTOFALL_DELAY="+AUTOFALL_DELAY+" SPEED+"+SPEED+" NR_BLOCKS="+NR_BLOCKS);
+  
   refresh_score();
 
   refresh_column();
@@ -1879,9 +1897,11 @@ function autofall(canvas, ctx) {
     set_start();
     STATE.new_z += DELTA;
   } else {
-    touchdown();
+    touchdown(canvas, ctx);
     if (STATE.new_z == 0) game_over(canvas, ctx);
-    else new_piece(canvas, ctx);
+    else {
+      new_piece(canvas, ctx);
+    }
   }
 }
 
