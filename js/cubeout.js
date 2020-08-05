@@ -1864,7 +1864,7 @@ function touchdown(canvas, ctx) {
   STATE.score += check_full_layers(LAYERS, COUNTS);
   
   NR_BLOCKS++;
-  IF (NR_BLOCKS % 50==0 && SPEED<=3){
+  if (NR_BLOCKS % 50==0 && SPEED<=3){
     SPEED++;
     $('#speed .button').removeClass('on');
     $('#speed .button:eq('+SPEED+')').addClass('on');
