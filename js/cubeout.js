@@ -34,7 +34,7 @@ var LINEWIDTH_PIT = 0.35;
 // game speed
 var SPEED = 2;
 var SPEED_MAP = {
-  0: 10000000,
+  0: 10000000
   1: 2000,
   2: 1000,
   3: 500,
@@ -42,7 +42,7 @@ var SPEED_MAP = {
 };
 
 var NR_BLOCKS = 0;
- 
+
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
@@ -1763,7 +1763,7 @@ function game_loop(canvas, ctx) {
 
   if (STATE.touchdown_flag && STATE.progress >= 1) {
     touchdown(canvas, ctx);
-
+    
     if (STATE.new_z == 0) game_over(canvas, ctx);
     else new_piece(canvas, ctx);
   }
@@ -1790,7 +1790,6 @@ function game_loop(canvas, ctx) {
     STATE.pause_ended_flag = 0;
     render_frame(canvas, ctx);
   }
-
 }
 
 function render_frame(canvas, ctx) {
@@ -1856,7 +1855,7 @@ function set_start(keep_angles) {
   STATE.progress = 0;
 }
 
-function touchdown(canvas,ctx) {
+function touchdown(canvas, ctx) {
   STATE.render_piece_flag = 0;
   STATE.refresh_layers_flag = 1;
 
@@ -1866,19 +1865,19 @@ function touchdown(canvas,ctx) {
   STATE.score += check_full_layers(LAYERS, COUNTS);
   
   NR_BLOCKS++;
-  if (NR_BLOCKS % 50==0 && SPEED<=3 && STATE.new_z != 0){
-	SPEED++;
-	$('#speed .button').removeClass('on');
+  if (NR_BLOCKS % 50==0 && SPEED<=3 && STATE.new_z !=0){
+    SPEED++;
+    $('#speed .button').removeClass('on');
     $('#speed .button:eq('+SPEED+')').addClass('on');
-	
-	AUTOFALL_DELAY = SPEED_MAP[SPEED];
-	save_settings();
-	
-	clearTimeout(ID2);
-	ID2 = setInterval(function () {  autofall(canvas, ctx);  }, AUTOFALL_DELAY);
-	//alert("Change Speed");
+    
+    AUTOFALL_DELAY = SPEED_MAP[SPEED];
+    save_settings();
+    
+    clearTimeout(ID2);
+    ID2 = setInterval(function () { autofall(canvas, ctx); }, AUTOFALL_DELAY);
+    //alert("Change Speed");
   }
-  //console.log("AUTOFALL_DELAY="+AUTOFALL_DELAY+" SPEED="+SPEED+" NR_BLOCKS="+NR_BLOCKS);
+  //console.log("AUTOFALL_DELAY="+AUTOFALL_DELAY+" SPEED+"+SPEED+" NR_BLOCKS="+NR_BLOCKS);
   
   refresh_score();
 
@@ -1900,11 +1899,11 @@ function autofall(canvas, ctx) {
     set_start();
     STATE.new_z += DELTA;
   } else {
-    touchdown(canvas,ctx);
+    touchdown(canvas, ctx);
     if (STATE.new_z == 0) game_over(canvas, ctx);
     else {
-	      new_piece(canvas, ctx);
-	}
+      new_piece(canvas, ctx);
+    }
   }
 }
 
@@ -1939,7 +1938,8 @@ function change_speed(el,canvas,ctx) {
   var speed = parseInt(el.innerHTML);
   SPEED = speed;
   AUTOFALL_DELAY = SPEED_MAP[SPEED];
-  ID2 = setInterval(function () {  autofall(canvas, ctx);  }, AUTOFALL_DELAY);
+
+  ID2 = setInterval(function () { autofall(canvas, ctx); }, AUTOFALL_DELAY);
   save_settings();
 }
 
@@ -2273,10 +2273,11 @@ $(document).ready(function () {
   
   
   $('#speed .button').click(function () {
-	if (canvas!=null){
-		clearTimeout(ID2);
-		change_speed($(this).get(0),canvas,ctx);
-	}
+  //  change_speed($(this).get(0));
+    if (canvas!=null){
+        clearTimeout(ID2);
+        change_speed($(this).get(0),canvas,ctx);
+    }
     $('#speed .button').removeClass('on');
     $(this).addClass('on');
   });
