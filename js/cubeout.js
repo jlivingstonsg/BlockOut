@@ -6,6 +6,7 @@
 var WIDTH = 500;
 var HEIGHT = 500;
 
+var BLOCKS_PLACED = 0
 // pit dimensions
 var PIT_WIDTH = 5;
 var PIT_HEIGHT = 5;
@@ -32,17 +33,15 @@ var LINEWIDTH_CUBE = 0.5;
 var LINEWIDTH_PIT = 0.35;
 
 // game speed
-var SPEED = 2;
+var SPEED = 0;
+var GAME_SPEED = SPEED;
 var SPEED_MAP = {
-  0: 10000000
+  0: 0,
   1: 2000,
   2: 1000,
   3: 500,
   4: 250,
 };
-
-var NR_BLOCKS = 0;
-
 var AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
 // animation
@@ -661,7 +660,7 @@ function point3d(ctx, cwidth, cheight, width, height, s, color, radius) {
 
 function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
   if (CACHE_PIT == 0 || refresh_flag) {
-  
+
     // colors
     var color1 = '#00ff0f'; // gradient start
     var color2 = '#00ff00'; // gradient end
@@ -685,11 +684,11 @@ function draw_pit(canvas, ctx, width, height, depth, refresh_flag) {
       offsety = z * (ZSIZE_Y - z);
 
       // r = g = b = Math.floor(64 * (0.5 + (2 * (depth - z)) / depth));
-      
+
             r = 0;
             g = 255;
-            b = 0;      
-      
+            b = 0;
+
       ctx.strokeStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
       //b = Math.floor(64*(0.1+1*(depth-z)/depth));
       //ctx.strokeStyle = "hsl(0,90%,"+b+"%)";
@@ -791,7 +790,7 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
   /*
     var offsetx1 = z*(ZSIZE_X-z);
     var offsety1 = z*(ZSIZE_Y-z);
-    
+
     var offsetx2 = (z+1)*(ZSIZE_X-(z+1));
     var offsety2 = (z+1)*(ZSIZE_Y-(z+1));
     */
@@ -845,7 +844,7 @@ function render_cube(canvas, ctx, width, height, depth, x, y, z, color, faces, o
 
   // right side
   if (faces[0] && x < cx) {
-  
+
     if (render_style == CUBE_GRADIENT) {
       var lingrad = ctx.createLinearGradient(right1, top1, right2, bottom2);
       lingrad.addColorStop(0.0, sidecolor);
@@ -1011,7 +1010,7 @@ function render_layer(canvas, ctx, layer, z, outline, depth) {
 
         if (force_color)
            color = depth - z - 1;
-        else        
+        else
            color = row[x] - 1;
 
         render_cube(canvas, ctx, PIT_WIDTH, PIT_HEIGHT, PIT_DEPTH, x, y, z, COLORS[color], faces, outline);
@@ -1152,7 +1151,7 @@ function render_piece(canvas, ctx, width, height, depth, x, y, z, piece, rotmatr
         point3d(ctx, cwidth,cheight, width,height, r1, "red", 3);
     }
     */
-    
+
 }
 
 function render_pit(canvas, ctx) {
@@ -1713,6 +1712,14 @@ function play_game(canvas, ctx, start_handler) {
   reset_pit(0);
   refresh_column();
 
+  GAME_SPEED = SPEED;
+  BLOCKS_PLACED = 0;
+  AUTOFALL_DELAY = SPEED_MAP[GAME_SPEED];
+  $('#speed .button').each(function () {
+    $(this).removeClass('on');
+    if ($(this).text().toLowerCase() == GAME_SPEED) $(this).addClass('on');
+  });
+
   STATE.paused = 0;
   STATE.pause_ended_flag = 0;
   STATE.score = 0;
@@ -1739,7 +1746,7 @@ var EC = 0;
 (SC = 0), (XC = 0);
 
 function game_loop(canvas, ctx) {
-    END = new Date().getTime();
+  END = new Date().getTime();
   ELAPSED = END - START;
   START = END;
 
@@ -1762,8 +1769,8 @@ function game_loop(canvas, ctx) {
   STATE.progress = cap(STATE.progress + ELAPSED / ANIM_DURATION, 1);
 
   if (STATE.touchdown_flag && STATE.progress >= 1) {
-    touchdown(canvas, ctx);
-    
+    speed_up(canvas, ctx);
+    touchdown();
     if (STATE.new_z == 0) game_over(canvas, ctx);
     else new_piece(canvas, ctx);
   }
@@ -1790,6 +1797,7 @@ function game_loop(canvas, ctx) {
     STATE.pause_ended_flag = 0;
     render_frame(canvas, ctx);
   }
+
 }
 
 function render_frame(canvas, ctx) {
@@ -1837,6 +1845,7 @@ function reset(canvas, ctx) {
   STATE.render_piece_flag = 1;
   STATE.touchdown_flag = 0;
 
+
   render_frame(canvas, ctx);
 }
 
@@ -1854,8 +1863,7 @@ function set_start(keep_angles) {
   STATE.start_matrix = STATE.current_matrix;
   STATE.progress = 0;
 }
-
-function touchdown(canvas, ctx) {
+function touchdown() {
   STATE.render_piece_flag = 0;
   STATE.refresh_layers_flag = 1;
 
@@ -1863,22 +1871,6 @@ function touchdown(canvas, ctx) {
   STATE.score += add_voxels(nvoxels, LAYERS, COUNTS);
 
   STATE.score += check_full_layers(LAYERS, COUNTS);
-  
-  NR_BLOCKS++;
-  if (NR_BLOCKS % 50==0 && SPEED<=3 && STATE.new_z !=0){
-    SPEED++;
-    $('#speed .button').removeClass('on');
-    $('#speed .button:eq('+SPEED+')').addClass('on');
-    
-    AUTOFALL_DELAY = SPEED_MAP[SPEED];
-    save_settings();
-    
-    clearTimeout(ID2);
-    ID2 = setInterval(function () { autofall(canvas, ctx); }, AUTOFALL_DELAY);
-    //alert("Change Speed");
-  }
-  //console.log("AUTOFALL_DELAY="+AUTOFALL_DELAY+" SPEED+"+SPEED+" NR_BLOCKS="+NR_BLOCKS);
-  
   refresh_score();
 
   refresh_column();
@@ -1889,6 +1881,8 @@ function new_piece(canvas, ctx) {
 }
 
 function game_over(canvas, ctx) {
+  clearTimeout(ID1);
+  clearTimeout(ID2);
   render_pit(canvas, ctx);
   end_game(canvas, ctx);
 }
@@ -1899,11 +1893,10 @@ function autofall(canvas, ctx) {
     set_start();
     STATE.new_z += DELTA;
   } else {
-    touchdown(canvas, ctx);
+    speed_up(canvas, ctx);
+    touchdown();
     if (STATE.new_z == 0) game_over(canvas, ctx);
-    else {
-      new_piece(canvas, ctx);
-    }
+    else new_piece(canvas, ctx);
   }
 }
 
@@ -1934,13 +1927,31 @@ function change_pit(el, canvas, ctx) {
   reset_allowed();
 }
 
-function change_speed(el,canvas,ctx) {
+function change_speed(el) {
   var speed = parseInt(el.innerHTML);
   SPEED = speed;
   AUTOFALL_DELAY = SPEED_MAP[SPEED];
 
-  ID2 = setInterval(function () { autofall(canvas, ctx); }, AUTOFALL_DELAY);
   save_settings();
+}
+
+function speed_up(canvas, ctx) {
+  BLOCKS_PLACED++;
+  if (BLOCKS_PLACED % 50 === 0) {
+    if (GAME_SPEED < 4) GAME_SPEED++;
+    AUTOFALL_DELAY = SPEED_MAP[GAME_SPEED];
+    clearTimeout(ID2);
+    if (AUTOFALL_DELAY) {
+      ID2 = setInterval(function () {
+        autofall(canvas, ctx);
+      }, AUTOFALL_DELAY);
+    }
+    $('#speed .button').each(function () {
+      $(this).removeClass('on');
+      if ($(this).text().toLowerCase() == GAME_SPEED) $(this).addClass('on');
+    });
+    save_settings();
+  }
 }
 
 function reset_allowed() {
@@ -2203,7 +2214,7 @@ var rotateSpeed = "medium";
 
 function setRotateSpeed(spd) {
     if (spd === "slow")
-        
+
       ANIM_DURATION = SLOW_ANIM_DURATION;
     else if (spd === "fast") {
         ANIM_DURATION = FAST_ANIM_DURATION;
@@ -2244,7 +2255,7 @@ $(document).ready(function () {
     $(this).addClass('on');
   });
 
-  
+
       $("#rotSpeed .button").each(function() {
         if ($(this).text().toLowerCase() == rotateSpeed) $(this).addClass("on");
     });
@@ -2253,9 +2264,9 @@ $(document).ready(function () {
         $("#rotSpeed .button").removeClass("on");
         $(this).addClass("on");
     });
-  
-  
-  
+
+
+
   var pit_string = PIT_WIDTH + 'x' + PIT_HEIGHT + 'x' + PIT_DEPTH;
   $('#pit .button').each(function () {
     if ($(this).text().toLowerCase() == pit_string) $(this).addClass('on');
@@ -2269,15 +2280,8 @@ $(document).ready(function () {
   $('#speed .button').each(function () {
     if ($(this).text().toLowerCase() == SPEED) $(this).addClass('on');
   });
-  
-  
-  
   $('#speed .button').click(function () {
-  //  change_speed($(this).get(0));
-    if (canvas!=null){
-        clearTimeout(ID2);
-        change_speed($(this).get(0),canvas,ctx);
-    }
+    change_speed($(this).get(0));
     $('#speed .button').removeClass('on');
     $(this).addClass('on');
   });
