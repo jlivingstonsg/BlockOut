@@ -7,12 +7,12 @@ The original lives on [Chrome Experiments](http://www.chromeexperiments.com/deta
 
 My modifications correct the way the pieces rotate. <br>
 Animation can get a little jaggy occasionally, but everything behaves as it should. <br>
-I did not intend to make this perfect but merely playable.<br>
 
 I will try to make it look and work, as the original BlockOut from 1989.  <br>
 
 =======  <br>
-Play  jlivingstonsg      game here: [CubeOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
+Play  it on GitHub with no SQL scoreboard:               [BlockOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
+Play  it on GitHub with SQL scoreboard on my server:     [BlockOut](https://gamereality.se/blockout/index.html) 
 <br>
 <br>
 <br>
