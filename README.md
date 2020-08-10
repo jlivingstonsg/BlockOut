@@ -12,7 +12,7 @@ I will try to make it look and work, as the original BlockOut from 1989.  <br>
 
 =======  <br>
 Play  it on GitHub with cookie scoreboard: _____________________________ [BlockOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
-Play  it on GitHub with cookie and SQL scoreboard on my server: _____  [BlockOut](https://gamereality.se/blockout/index.html) <br>
+Play  it on my server with cookie and SQL scoreboard: _____  [BlockOut](https://gamereality.se/blockout/index.html) <br>
 <br>
 <br>
 <br>
