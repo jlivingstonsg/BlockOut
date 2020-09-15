@@ -10,7 +10,7 @@ Animation can get a little jaggy occasionally, but everything behaves as it shou
 I will try to make it look and work, as the original BlockOut from 1989.  <br>
 
 Regards 
-Master of Science in Engineering Physics 
+Master of Science in Engineering Physics   <br> 
 [GameReality](https://gamereality.se/)
 
 =======  <br>
