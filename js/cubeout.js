@@ -13,8 +13,8 @@ var PIT_HEIGHT = 5;
 var PIT_DEPTH = 10;
 
 // fake perspective
-var ZSIZE_X = 32;
-var ZSIZE_Y = 30;
+var ZSIZE_X = 28;
+var ZSIZE_Y = 28;
 
 // color constants
 var PIECE_COLOR = [50, 0, 90];
