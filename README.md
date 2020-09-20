@@ -14,7 +14,6 @@ Master of Science in Engineering Physics   <br>
 [GameReality](https://gamereality.se/)
 
 =======  <br>
-Play  it on GitHub with cookie scoreboard: __________________ [BlockOut](https://jlivingstonsg.github.io/BlockOut/)   <br>
 Play  it on my server with cookie and SQL scoreboard: ______  [BlockOut](https://gamereality.se/blockout/index.php) <br>
 <br>
 <br>
