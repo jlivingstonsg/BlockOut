@@ -19,6 +19,7 @@ Play  it on my server with cookie and SQL scoreboard: ______  [BlockOut](https:/
 <br>
 <br>
 _______________________________________________________________
+Only with cookie scoreboard:  <br>
   jlivingstonsg     [CubeOut](https://jlivingstonsg.github.io/BlockOut/)       <br>
   woshik            [CubeOut](https://woshik.github.io/cube-game/)       <br>
   sami-23           [CubeOut](https://sami-23.github.io/BlockOut/) <br>
