@@ -24,3 +24,5 @@ Only with cookie scoreboard:  <br>
   woshik            [CubeOut](https://woshik.github.io/cube-game/)       <br>
   sami-23           [CubeOut](https://sami-23.github.io/BlockOut/) <br>
   bhargavgohil      [CubeOut](https://bhargavgohil.github.io/)    <br>
+  rajatmadaan786    [CubeOut](  https://rajatmadaan786.github.io/blockout/)    <br>
+
