@@ -106,7 +106,7 @@ div#over {
 span.pit_label_text {
     margin-top: 12px;
     margin-bottom: 3px;
-    font-size: 15px !important;
+    font-size: 12px !important;
     font-family: inherit;
     letter-spacing: 3px;
     color:  #ADD8E6;
@@ -127,7 +127,7 @@ span#keys {
 span.pieces_label_text {
     margin-top: 15px;
     color:  #ADD8E6;
-    font-size: 15px !important;
+    font-size: 12px !important;
     letter-spacing: 3px;
 }
 span#pit span.button {
